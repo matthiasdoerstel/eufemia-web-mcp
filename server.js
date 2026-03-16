@@ -302,11 +302,22 @@ app.get('/sse', async (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-transform')
   res.setHeader('Connection', 'keep-alive')
 
-  // Send 2KB padding comment to flush Zscaler/proxy buffers
+  // Patch res.write to append padding after every SSE event to flush Zscaler's buffer
+  const originalWrite = res.write.bind(res)
+  res.write = (chunk, ...args) => {
+    const result = originalWrite(chunk, ...args)
+    const str = chunk?.toString() || ''
+    if (!str.startsWith(':')) {
+      originalWrite(': ' + ' '.repeat(2048) + '\n\n')
+    }
+    return result
+  }
+
+  // Send initial padding to flush proxy buffers on connect
   res.write(': ' + ' '.repeat(2048) + '\n\n')
 
   // Send keepalive every 15s to prevent proxy timeouts
-  const keepalive = setInterval(() => res.write(': keepalive\n\n'), 15000)
+  const keepalive = setInterval(() => originalWrite(': keepalive\n\n'), 15000)
   res.on('close', () => clearInterval(keepalive))
 
   const transport = new SSEServerTransport('/message', res)
