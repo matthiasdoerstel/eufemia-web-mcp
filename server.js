@@ -298,6 +298,7 @@ app.get('/', (req, res) => {
 // Figma Make connects here via GET /sse
 app.get('/sse', async (req, res) => {
   res.setHeader('X-Accel-Buffering', 'no')
+  req.socket.setNoDelay(true)
 
   // Patch res.write to append 2KB padding after each SSE event to flush Zscaler's buffer
   const originalWrite = res.write.bind(res)
@@ -305,7 +306,7 @@ app.get('/sse', async (req, res) => {
     const result = originalWrite(chunk, ...args)
     const str = chunk?.toString() || ''
     if (!str.startsWith(':')) {
-      originalWrite(': ' + ' '.repeat(2048) + '\n\n')
+      originalWrite(': ' + ' '.repeat(16384) + '\n\n')
     }
     return result
   }
