@@ -298,11 +298,8 @@ app.get('/', (req, res) => {
 // Figma Make connects here via GET /sse
 app.get('/sse', async (req, res) => {
   res.setHeader('X-Accel-Buffering', 'no')
-  res.setHeader('Content-Type', 'text/event-stream')
-  res.setHeader('Cache-Control', 'no-cache, no-transform')
-  res.setHeader('Connection', 'keep-alive')
 
-  // Patch res.write to append padding after every SSE event to flush Zscaler's buffer
+  // Patch res.write to append 2KB padding after each SSE event to flush Zscaler's buffer
   const originalWrite = res.write.bind(res)
   res.write = (chunk, ...args) => {
     const result = originalWrite(chunk, ...args)
@@ -312,9 +309,6 @@ app.get('/sse', async (req, res) => {
     }
     return result
   }
-
-  // Send initial padding to flush proxy buffers on connect
-  res.write(': ' + ' '.repeat(2048) + '\n\n')
 
   // Send keepalive every 15s to prevent proxy timeouts
   const keepalive = setInterval(() => originalWrite(': keepalive\n\n'), 15000)
