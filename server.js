@@ -303,6 +303,8 @@ app.get('/sse', async (req, res) => {
   // Patch res.write to append 2KB padding after each SSE event to flush Zscaler's buffer
   const originalWrite = res.write.bind(res)
   res.write = (chunk, ...args) => {
+    const str = chunk?.toString() || ''
+    console.log(`← SSE write ${str.length} bytes: ${str.slice(0, 80).replace(/\n/g, '\\n')}`)
     const result = originalWrite(chunk, ...args)
     const str = chunk?.toString() || ''
     if (!str.startsWith(':')) {
@@ -331,6 +333,7 @@ app.get('/sse', async (req, res) => {
 app.post('/message', async (req, res) => {
   const sessionId = req.query.sessionId
   const transport = sessions[sessionId]
+  console.log(`→ POST /message session=${sessionId} method=${req.body?.method}`)
 
   if (!transport) {
     return res.status(404).json({ error: `Session not found: ${sessionId}` })
