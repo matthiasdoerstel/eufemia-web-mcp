@@ -306,7 +306,6 @@ app.get('/sse', async (req, res) => {
     const str = chunk?.toString() || ''
     console.log(`← SSE write ${str.length} bytes: ${str.slice(0, 80).replace(/\n/g, '\\n')}`)
     const result = originalWrite(chunk, ...args)
-    const str = chunk?.toString() || ''
     if (!str.startsWith(':')) {
       originalWrite(': ' + ' '.repeat(16384) + '\n\n')
     }
