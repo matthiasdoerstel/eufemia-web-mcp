@@ -73,12 +73,13 @@ async function loadComponentList() {
   }
 }
 
-// ─── MCP Server ───────────────────────────────────────────────────────────────
+// ─── MCP Server factory (new instance per connection) ─────────────────────────
 
-const server = new McpServer(
-  { name: 'eufemia-mcp', version: '0.1.0' },
-  { capabilities: { tools: {} } }
-)
+function createMcpServer() {
+  const server = new McpServer(
+    { name: 'eufemia-mcp', version: '0.1.0' },
+    { capabilities: { tools: {} } }
+  )
 
 // Tool: get_design_tokens
 server.tool(
@@ -278,6 +279,9 @@ server.tool(
   }
 )
 
+  return server
+}
+
 function toCamelCase(str) {
   return str.replace(/(^[a-z])|_([a-z])/g, (_, a, b) => (a || b).toUpperCase())
 }
@@ -324,7 +328,8 @@ app.get('/sse', async (req, res) => {
   })
 
   console.log(`↗ New session: ${transport.sessionId}`)
-  await server.connect(transport)
+  const mcpServer = createMcpServer()
+  await mcpServer.connect(transport)
 })
 
 // Figma Make posts tool calls here
