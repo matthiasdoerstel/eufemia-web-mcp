@@ -305,11 +305,10 @@ app.get('/sse', async (req, res) => {
   res.write = (chunk, ...args) => {
     const str = chunk?.toString() || ''
     console.log(`← SSE write ${str.length} bytes: ${str.slice(0, 80).replace(/\n/g, '\\n')}`)
-    const result = originalWrite(chunk, ...args)
     if (!str.startsWith(':')) {
-      originalWrite(': ' + ' '.repeat(16384) + '\n\n')
+      return originalWrite(str + ': ' + ' '.repeat(16384) + '\n\n', ...args)
     }
-    return result
+    return originalWrite(chunk, ...args)
   }
 
   // Send keepalive every 15s to prevent proxy timeouts
