@@ -1,0 +1,83 @@
+name: Sync Eufemia Data
+
+on:
+  schedule:
+    # Runs daily at 08:00 UTC
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Force a specific version (e.g. 11.1.0). Leave empty to auto-detect latest.'
+        required: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Get latest @dnb/eufemia version
+        id: version
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=$(npm view @dnb/eufemia version)" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check if version already extracted
+        id: check
+        run: |
+          MAJOR=$(echo "${{ steps.version.outputs.version }}" | cut -d. -f1)
+          DATA_FILE="data/v${MAJOR}/meta.json"
+          if [ -f "$DATA_FILE" ]; then
+            EXTRACTED=$(node -e "console.log(require('./${DATA_FILE}').eufemiaVersion)")
+            if [ "$EXTRACTED" = "${{ steps.version.outputs.version }}" ]; then
+              echo "skip=true" >> $GITHUB_OUTPUT
+              echo "Already have ${{ steps.version.outputs.version }}, skipping."
+            else
+              echo "skip=false" >> $GITHUB_OUTPUT
+              echo "Have $EXTRACTED, will update to ${{ steps.version.outputs.version }}"
+            fi
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "No data for major v${MAJOR}, will extract ${{ steps.version.outputs.version }}"
+          fi
+
+      - name: Install MCP dependencies
+        if: steps.check.outputs.skip != 'true'
+        run: npm ci
+
+      - name: Run extraction
+        if: steps.check.outputs.skip != 'true'
+        run: node scripts/extract.mjs --version ${{ steps.version.outputs.version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update package.json eufemia version
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          MAJOR=$(echo "${{ steps.version.outputs.version }}" | cut -d. -f1)
+          node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
+            pkg.dependencies['@dnb/eufemia'] = '^${{ steps.version.outputs.version }}';
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+
+      - name: Commit and push
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ package.json
+          git commit -m "chore: sync Eufemia ${{ steps.version.outputs.version }} data"
+          git push
