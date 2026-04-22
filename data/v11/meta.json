@@ -1,7 +1,8 @@
 {
   "eufemiaVersion": "11.0.0",
-  "extractedAt": "2026-04-22T07:56:00.965Z",
+  "extractedAt": "2026-04-22T10:16:01.413Z",
   "counts": {
+    "scaleTokens": 435,
     "primitiveTokens": 88,
     "semanticTokens": 197,
     "semanticTokensDark": 197,

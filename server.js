@@ -31,6 +31,9 @@ function loadLatestData() {
   const dir = path.join(dataDir, latest)
 
   const meta = JSON.parse(readFileSync(path.join(dir, 'meta.json'), 'utf-8'))
+  const scaleTokens = existsSync(path.join(dir, 'tokens-scale.json'))
+    ? JSON.parse(readFileSync(path.join(dir, 'tokens-scale.json'), 'utf-8'))
+    : []
   const primitiveTokens = JSON.parse(readFileSync(path.join(dir, 'tokens-primitive.json'), 'utf-8'))
   const semanticTokens = JSON.parse(readFileSync(path.join(dir, 'tokens-semantic.json'), 'utf-8'))
   const semanticTokensDark = existsSync(path.join(dir, 'tokens-semantic-dark.json'))
@@ -40,12 +43,12 @@ function loadLatestData() {
   const components = JSON.parse(readFileSync(path.join(dir, 'components.json'), 'utf-8'))
 
   console.log(`✓ Loaded Eufemia ${meta.eufemiaVersion} (extracted ${meta.extractedAt.slice(0, 10)})`)
-  console.log(`  ${primitiveTokens.length} primitive · ${semanticTokens.length} semantic tokens · ${icons.length} icons · ${Object.keys(components).length} components`)
+  console.log(`  ${scaleTokens.length} scale · ${primitiveTokens.length} primitive · ${semanticTokens.length} semantic tokens · ${icons.length} icons · ${Object.keys(components).length} components`)
 
-  return { meta, primitiveTokens, semanticTokens, semanticTokensDark, icons, components, versions }
+  return { meta, scaleTokens, primitiveTokens, semanticTokens, semanticTokensDark, icons, components, versions }
 }
 
-const { meta, primitiveTokens, semanticTokens, semanticTokensDark, icons, components, versions } = loadLatestData()
+const { meta, scaleTokens, primitiveTokens, semanticTokens, semanticTokensDark, icons, components, versions } = loadLatestData()
 
 const baseIcons = icons
 const iconSet = new Set(icons.map(i => i.name).concat(icons.filter(i => i.hasMedium).map(i => `${i.name}_medium`)))
@@ -62,14 +65,14 @@ function createMcpServer() {
   // Tool: get_design_tokens
   server.tool(
     'get_design_tokens',
-    'Get DNB Eufemia design tokens. Use layer="semantic" (default) for the new semantic token system (--token-color-background-*, etc.), layer="primitive" for the base color palette (--color-sea-green, etc.), or layer="dark" for semantic dark mode values.',
+    'Get DNB Eufemia design tokens. Use layer="semantic" (default) for contextual tokens (--token-color-background-*, etc.), layer="scale" for the raw color scale (--dnb-coldgreen-*, --dnb-greyscale-*, etc.), layer="primitive" for the legacy color palette (--color-sea-green, etc.), or layer="dark" for semantic dark mode values.',
     {
-      layer: z.enum(['semantic', 'primitive', 'dark']).optional().describe('Token layer: "semantic" (default) — contextual tokens for building UI; "primitive" — base color palette; "dark" — semantic dark mode overrides'),
+      layer: z.enum(['semantic', 'scale', 'primitive', 'dark']).optional().describe('Token layer: "semantic" (default) — contextual tokens for building UI; "scale" — raw color scale values; "primitive" — legacy color palette; "dark" — semantic dark mode overrides'),
       category: z.string().optional().describe('Filter by name fragment (e.g. "background", "action", "text", "color", "spacing")'),
       search: z.string().optional().describe('Search by token name or value (e.g. "action", "#007272", "0.25rem")')
     },
     async ({ layer = 'semantic', category, search }) => {
-      const tokenMap = { semantic: semanticTokens, primitive: primitiveTokens, dark: semanticTokensDark }
+      const tokenMap = { semantic: semanticTokens, scale: scaleTokens, primitive: primitiveTokens, dark: semanticTokensDark }
       let filtered = tokenMap[layer] ?? semanticTokens
 
       if (category) {
@@ -302,6 +305,6 @@ process.on('unhandledRejection', err => console.error('Unhandled rejection:', er
 const PORT = process.env.PORT || 3456
 app.listen(PORT, () => {
   console.log(`\nEufemia MCP Server  http://localhost:${PORT}`)
-  console.log(`  Eufemia ${meta.eufemiaVersion}  ·  ${meta.counts.primitiveTokens} primitive + ${meta.counts.semanticTokens} semantic tokens · ${meta.counts.icons} icons · ${meta.counts.components} components`)
+  console.log(`  Eufemia ${meta.eufemiaVersion}  ·  ${meta.counts.scaleTokens ?? 0} scale + ${meta.counts.primitiveTokens} primitive + ${meta.counts.semanticTokens} semantic tokens · ${meta.counts.icons} icons · ${meta.counts.components} components`)
   console.log(`  Available versions: ${versions.join(', ')}\n`)
 })

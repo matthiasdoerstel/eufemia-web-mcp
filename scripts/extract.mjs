@@ -72,8 +72,11 @@ const themeDir = findFile(
 )
 if (!themeDir) throw new Error('Could not find theme directory in package')
 
-// Primitive tokens: --color-*, --spacing-*, etc.
+// Primitive tokens: --color-*, --spacing-*, etc. (legacy)
 const primitiveTokens = parseCssTokens(path.join(themeDir, 'ui-theme-properties.css'))
+
+// Scale tokens: --dnb-coldgreen-*, --dnb-greyscale-*, etc. (new in v11)
+const scaleTokens = parseCssTokens(findFile(path.join(themeDir, 'ui-theme-basis.css')))
 
 // Semantic tokens: --token-color-background-*, etc. (new in v11)
 const semanticTokens = parseCssTokens(findFile(path.join(themeDir, 'tokens.scss')))
@@ -81,6 +84,7 @@ const semanticTokens = parseCssTokens(findFile(path.join(themeDir, 'tokens.scss'
 // Semantic dark mode overrides (new in v11)
 const semanticTokensDark = parseCssTokens(findFile(path.join(themeDir, 'tokens-dark.scss')))
 
+console.log(`  ${scaleTokens.length} scale tokens`)
 console.log(`  ${primitiveTokens.length} primitive tokens`)
 console.log(`  ${semanticTokens.length} semantic tokens`)
 console.log(`  ${semanticTokensDark.length} semantic dark tokens`)
@@ -188,6 +192,7 @@ writeFileSync(path.join(outputDir, 'meta.json'), JSON.stringify({
   eufemiaVersion: versionArg,
   extractedAt: new Date().toISOString(),
   counts: {
+    scaleTokens: scaleTokens.length,
     primitiveTokens: primitiveTokens.length,
     semanticTokens: semanticTokens.length,
     semanticTokensDark: semanticTokensDark.length,
@@ -196,6 +201,7 @@ writeFileSync(path.join(outputDir, 'meta.json'), JSON.stringify({
   }
 }, null, 2))
 
+writeFileSync(path.join(outputDir, 'tokens-scale.json'), JSON.stringify(scaleTokens, null, 2))
 writeFileSync(path.join(outputDir, 'tokens-primitive.json'), JSON.stringify(primitiveTokens, null, 2))
 writeFileSync(path.join(outputDir, 'tokens-semantic.json'), JSON.stringify(semanticTokens, null, 2))
 writeFileSync(path.join(outputDir, 'tokens-semantic-dark.json'), JSON.stringify(semanticTokensDark, null, 2))
@@ -204,6 +210,7 @@ writeFileSync(path.join(outputDir, 'components.json'), JSON.stringify(components
 
 console.log(`\n✓ Extracted to ${outputDir}`)
 console.log(`  eufemiaVersion    : ${versionArg}`)
+console.log(`  scale tokens      : ${scaleTokens.length}`)
 console.log(`  primitive tokens  : ${primitiveTokens.length}`)
 console.log(`  semantic tokens   : ${semanticTokens.length}`)
 console.log(`  semantic dark     : ${semanticTokensDark.length}`)
