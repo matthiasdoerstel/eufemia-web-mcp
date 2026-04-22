@@ -51,7 +51,7 @@ console.log('  Done.')
 console.log('\nExtracting tokens...')
 
 function parseCssTokens(filePath) {
-  if (!filePath) return []
+  if (!filePath || !existsSync(filePath)) return []
   const css = readFileSync(filePath, 'utf-8')
   const results = []
   const regex = /--([a-z0-9][a-z0-9-]+):\s*([^;]+);/g
@@ -62,32 +62,48 @@ function parseCssTokens(filePath) {
   return results
 }
 
-function findFile(...candidates) {
-  return candidates.find(p => existsSync(p)) || null
+const THEMES = ['ui', 'sbanken', 'eiendom', 'carnegie']
+const THEME_DIR_ALIASES = { ui: ['ui', 'theme-ui'] }
+
+function findThemeDir(theme) {
+  const aliases = THEME_DIR_ALIASES[theme] || [theme]
+  for (const alias of aliases) {
+    const p = path.join(pkgDir, 'style/themes', alias)
+    if (existsSync(p)) return p
+  }
+  return null
 }
 
-const themeDir = findFile(
-  path.join(pkgDir, 'style/themes/ui'),
-  path.join(pkgDir, 'style/themes/theme-ui')
-)
-if (!themeDir) throw new Error('Could not find theme directory in package')
+// Default theme (ui / DNB) — also provides primitive tokens
+const defaultThemeDir = findThemeDir('ui')
+if (!defaultThemeDir) throw new Error('Could not find ui theme directory in package')
 
-// Primitive tokens: --color-*, --spacing-*, etc. (legacy)
-const primitiveTokens = parseCssTokens(path.join(themeDir, 'ui-theme-properties.css'))
+// Primitive tokens: --color-*, --spacing-*, etc. (legacy, ui only)
+const primitiveTokens = parseCssTokens(path.join(defaultThemeDir, 'ui-theme-properties.css'))
 
-// Scale tokens: --dnb-coldgreen-*, --dnb-greyscale-*, etc. (new in v11)
-const scaleTokens = parseCssTokens(findFile(path.join(themeDir, 'ui-theme-basis.css')))
+// Per-theme token extraction
+const themeTokens = {}
+for (const theme of THEMES) {
+  const dir = findThemeDir(theme)
+  if (!dir) {
+    console.log(`  [skip] theme "${theme}" not found`)
+    continue
+  }
+  // Basis file name: ui-theme-basis.css for ui, {theme}-theme-basis.css for others
+  const basisFile = path.join(dir, `${theme}-theme-basis.css`)
+  const scale = parseCssTokens(basisFile)
+  const semantic = parseCssTokens(path.join(dir, 'tokens.scss'))
+  const semanticDark = parseCssTokens(path.join(dir, 'tokens-dark.scss'))
+  themeTokens[theme] = { scale, semantic, semanticDark }
+  console.log(`  ${theme}: ${scale.length} scale · ${semantic.length} semantic · ${semanticDark.length} dark`)
+}
 
-// Semantic tokens: --token-color-background-*, etc. (new in v11)
-const semanticTokens = parseCssTokens(findFile(path.join(themeDir, 'tokens.scss')))
+// Convenience aliases for default theme (backward compat)
+const scaleTokens = themeTokens.ui?.scale ?? []
+const semanticTokens = themeTokens.ui?.semantic ?? []
+const semanticTokensDark = themeTokens.ui?.semanticDark ?? []
 
-// Semantic dark mode overrides (new in v11)
-const semanticTokensDark = parseCssTokens(findFile(path.join(themeDir, 'tokens-dark.scss')))
-
-console.log(`  ${scaleTokens.length} scale tokens`)
-console.log(`  ${primitiveTokens.length} primitive tokens`)
-console.log(`  ${semanticTokens.length} semantic tokens`)
-console.log(`  ${semanticTokensDark.length} semantic dark tokens`)
+console.log(`  ${primitiveTokens.length} primitive tokens (ui only)`)
 
 // ─── Extract: icons ───────────────────────────────────────────────────────────
 
@@ -188,19 +204,31 @@ console.log('')
 
 mkdirSync(outputDir, { recursive: true })
 
+const themeCounts = {}
+for (const [theme, data] of Object.entries(themeTokens)) {
+  themeCounts[theme] = {
+    scale: data.scale.length,
+    semantic: data.semantic.length,
+    semanticDark: data.semanticDark.length
+  }
+  writeFileSync(path.join(outputDir, `tokens-scale-${theme}.json`), JSON.stringify(data.scale, null, 2))
+  writeFileSync(path.join(outputDir, `tokens-semantic-${theme}.json`), JSON.stringify(data.semantic, null, 2))
+  writeFileSync(path.join(outputDir, `tokens-semantic-dark-${theme}.json`), JSON.stringify(data.semanticDark, null, 2))
+}
+
 writeFileSync(path.join(outputDir, 'meta.json'), JSON.stringify({
   eufemiaVersion: versionArg,
   extractedAt: new Date().toISOString(),
+  themes: Object.keys(themeTokens),
   counts: {
-    scaleTokens: scaleTokens.length,
     primitiveTokens: primitiveTokens.length,
-    semanticTokens: semanticTokens.length,
-    semanticTokensDark: semanticTokensDark.length,
     icons: icons.length,
-    components: componentList.length
+    components: componentList.length,
+    themes: themeCounts
   }
 }, null, 2))
 
+// Backward-compat aliases (ui = default theme)
 writeFileSync(path.join(outputDir, 'tokens-scale.json'), JSON.stringify(scaleTokens, null, 2))
 writeFileSync(path.join(outputDir, 'tokens-primitive.json'), JSON.stringify(primitiveTokens, null, 2))
 writeFileSync(path.join(outputDir, 'tokens-semantic.json'), JSON.stringify(semanticTokens, null, 2))
@@ -209,10 +237,10 @@ writeFileSync(path.join(outputDir, 'icons.json'), JSON.stringify(icons, null, 2)
 writeFileSync(path.join(outputDir, 'components.json'), JSON.stringify(components, null, 2))
 
 console.log(`\n✓ Extracted to ${outputDir}`)
-console.log(`  eufemiaVersion    : ${versionArg}`)
-console.log(`  scale tokens      : ${scaleTokens.length}`)
-console.log(`  primitive tokens  : ${primitiveTokens.length}`)
-console.log(`  semantic tokens   : ${semanticTokens.length}`)
-console.log(`  semantic dark     : ${semanticTokensDark.length}`)
-console.log(`  icons             : ${icons.length}`)
-console.log(`  components        : ${componentList.length}`)
+console.log(`  eufemiaVersion : ${versionArg}`)
+console.log(`  primitive      : ${primitiveTokens.length}`)
+console.log(`  icons          : ${icons.length}`)
+console.log(`  components     : ${componentList.length}`)
+for (const [theme, counts] of Object.entries(themeCounts)) {
+  console.log(`  ${theme.padEnd(10)}: ${counts.scale} scale · ${counts.semantic} semantic · ${counts.semanticDark} dark`)
+}

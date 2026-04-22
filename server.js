@@ -31,24 +31,40 @@ function loadLatestData() {
   const dir = path.join(dataDir, latest)
 
   const meta = JSON.parse(readFileSync(path.join(dir, 'meta.json'), 'utf-8'))
-  const scaleTokens = existsSync(path.join(dir, 'tokens-scale.json'))
-    ? JSON.parse(readFileSync(path.join(dir, 'tokens-scale.json'), 'utf-8'))
-    : []
   const primitiveTokens = JSON.parse(readFileSync(path.join(dir, 'tokens-primitive.json'), 'utf-8'))
-  const semanticTokens = JSON.parse(readFileSync(path.join(dir, 'tokens-semantic.json'), 'utf-8'))
-  const semanticTokensDark = existsSync(path.join(dir, 'tokens-semantic-dark.json'))
-    ? JSON.parse(readFileSync(path.join(dir, 'tokens-semantic-dark.json'), 'utf-8'))
-    : []
   const icons = JSON.parse(readFileSync(path.join(dir, 'icons.json'), 'utf-8'))
   const components = JSON.parse(readFileSync(path.join(dir, 'components.json'), 'utf-8'))
 
-  console.log(`✓ Loaded Eufemia ${meta.eufemiaVersion} (extracted ${meta.extractedAt.slice(0, 10)})`)
-  console.log(`  ${scaleTokens.length} scale · ${primitiveTokens.length} primitive · ${semanticTokens.length} semantic tokens · ${icons.length} icons · ${Object.keys(components).length} components`)
+  // Load per-theme token files
+  const availableThemes = meta.themes ?? ['ui']
+  const themeTokens = {}
+  for (const theme of availableThemes) {
+    themeTokens[theme] = {
+      scale: existsSync(path.join(dir, `tokens-scale-${theme}.json`))
+        ? JSON.parse(readFileSync(path.join(dir, `tokens-scale-${theme}.json`), 'utf-8'))
+        : JSON.parse(readFileSync(path.join(dir, 'tokens-scale.json'), 'utf-8')),
+      semantic: existsSync(path.join(dir, `tokens-semantic-${theme}.json`))
+        ? JSON.parse(readFileSync(path.join(dir, `tokens-semantic-${theme}.json`), 'utf-8'))
+        : JSON.parse(readFileSync(path.join(dir, 'tokens-semantic.json'), 'utf-8')),
+      semanticDark: existsSync(path.join(dir, `tokens-semantic-dark-${theme}.json`))
+        ? JSON.parse(readFileSync(path.join(dir, `tokens-semantic-dark-${theme}.json`), 'utf-8'))
+        : (existsSync(path.join(dir, 'tokens-semantic-dark.json'))
+            ? JSON.parse(readFileSync(path.join(dir, 'tokens-semantic-dark.json'), 'utf-8'))
+            : [])
+    }
+  }
 
-  return { meta, scaleTokens, primitiveTokens, semanticTokens, semanticTokensDark, icons, components, versions }
+  console.log(`✓ Loaded Eufemia ${meta.eufemiaVersion} (extracted ${meta.extractedAt.slice(0, 10)})`)
+  console.log(`  ${primitiveTokens.length} primitive tokens · ${icons.length} icons · ${Object.keys(components).length} components`)
+  for (const theme of availableThemes) {
+    const t = themeTokens[theme]
+    console.log(`  [${theme}] ${t.scale.length} scale · ${t.semantic.length} semantic · ${t.semanticDark.length} dark`)
+  }
+
+  return { meta, primitiveTokens, themeTokens, availableThemes, icons, components, versions }
 }
 
-const { meta, scaleTokens, primitiveTokens, semanticTokens, semanticTokensDark, icons, components, versions } = loadLatestData()
+const { meta, primitiveTokens, themeTokens, availableThemes, icons, components, versions } = loadLatestData()
 
 const baseIcons = icons
 const iconSet = new Set(icons.map(i => i.name).concat(icons.filter(i => i.hasMedium).map(i => `${i.name}_medium`)))
@@ -65,15 +81,22 @@ function createMcpServer() {
   // Tool: get_design_tokens
   server.tool(
     'get_design_tokens',
-    'Get DNB Eufemia design tokens. Use layer="semantic" (default) for contextual tokens (--token-color-background-*, etc.), layer="scale" for the raw color scale (--dnb-coldgreen-*, --dnb-greyscale-*, etc.), layer="primitive" for the legacy color palette (--color-sea-green, etc.), or layer="dark" for semantic dark mode values.',
+    'Get DNB Eufemia design tokens. Use layer="semantic" (default) for contextual tokens (--token-color-background-*, etc.), layer="scale" for the raw color scale (--dnb-coldgreen-*, --dnb-greyscale-*, etc.), layer="primitive" for the legacy color palette (--color-sea-green, etc.), or layer="dark" for semantic dark mode values. Use theme to select a brand theme (default: "ui" = DNB).',
     {
-      layer: z.enum(['semantic', 'scale', 'primitive', 'dark']).optional().describe('Token layer: "semantic" (default) — contextual tokens for building UI; "scale" — raw color scale values; "primitive" — legacy color palette; "dark" — semantic dark mode overrides'),
+      layer: z.enum(['semantic', 'scale', 'primitive', 'dark']).optional().describe('Token layer: "semantic" (default) — contextual tokens for building UI; "scale" — raw color scale values; "primitive" — legacy color palette (ui only); "dark" — semantic dark mode overrides'),
+      theme: z.enum(['ui', 'sbanken', 'eiendom', 'carnegie']).optional().describe('Brand theme (default: "ui" = DNB). Other themes: "sbanken", "eiendom", "carnegie"'),
       category: z.string().optional().describe('Filter by name fragment (e.g. "background", "action", "text", "color", "spacing")'),
       search: z.string().optional().describe('Search by token name or value (e.g. "action", "#007272", "0.25rem")')
     },
-    async ({ layer = 'semantic', category, search }) => {
-      const tokenMap = { semantic: semanticTokens, scale: scaleTokens, primitive: primitiveTokens, dark: semanticTokensDark }
-      let filtered = tokenMap[layer] ?? semanticTokens
+    async ({ layer = 'semantic', theme = 'ui', category, search }) => {
+      const tokens = themeTokens[theme] ?? themeTokens.ui
+      const tokenMap = {
+        semantic: tokens.semantic,
+        scale: tokens.scale,
+        primitive: primitiveTokens,
+        dark: tokens.semanticDark
+      }
+      let filtered = tokenMap[layer] ?? tokens.semantic
 
       if (category) {
         const cat = category.toLowerCase()
@@ -89,6 +112,7 @@ function createMcpServer() {
 
       const result = {
         layer,
+        theme,
         total: filtered.length,
         note: filtered.length > 200 ? 'Results truncated to 200 — use category/search to narrow down' : undefined,
         tokens: filtered.slice(0, 200)
@@ -294,6 +318,7 @@ app.get('/health', (_, res) => {
     eufemiaVersion: meta.eufemiaVersion,
     extractedAt: meta.extractedAt,
     availableVersions: versions,
+    themes: availableThemes,
     counts: meta.counts
   })
 })
@@ -305,6 +330,7 @@ process.on('unhandledRejection', err => console.error('Unhandled rejection:', er
 const PORT = process.env.PORT || 3456
 app.listen(PORT, () => {
   console.log(`\nEufemia MCP Server  http://localhost:${PORT}`)
-  console.log(`  Eufemia ${meta.eufemiaVersion}  ·  ${meta.counts.scaleTokens ?? 0} scale + ${meta.counts.primitiveTokens} primitive + ${meta.counts.semanticTokens} semantic tokens · ${meta.counts.icons} icons · ${meta.counts.components} components`)
+  console.log(`  Eufemia ${meta.eufemiaVersion}  ·  ${meta.counts.primitiveTokens} primitive tokens · ${meta.counts.icons} icons · ${meta.counts.components} components`)
+  console.log(`  Themes: ${availableThemes.join(', ')}`)
   console.log(`  Available versions: ${versions.join(', ')}\n`)
 })
