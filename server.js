@@ -31,17 +31,21 @@ function loadLatestData() {
   const dir = path.join(dataDir, latest)
 
   const meta = JSON.parse(readFileSync(path.join(dir, 'meta.json'), 'utf-8'))
-  const tokens = JSON.parse(readFileSync(path.join(dir, 'tokens.json'), 'utf-8'))
+  const primitiveTokens = JSON.parse(readFileSync(path.join(dir, 'tokens-primitive.json'), 'utf-8'))
+  const semanticTokens = JSON.parse(readFileSync(path.join(dir, 'tokens-semantic.json'), 'utf-8'))
+  const semanticTokensDark = existsSync(path.join(dir, 'tokens-semantic-dark.json'))
+    ? JSON.parse(readFileSync(path.join(dir, 'tokens-semantic-dark.json'), 'utf-8'))
+    : []
   const icons = JSON.parse(readFileSync(path.join(dir, 'icons.json'), 'utf-8'))
   const components = JSON.parse(readFileSync(path.join(dir, 'components.json'), 'utf-8'))
 
   console.log(`✓ Loaded Eufemia ${meta.eufemiaVersion} (extracted ${meta.extractedAt.slice(0, 10)})`)
-  console.log(`  ${tokens.length} tokens · ${icons.length} icons · Object.keys(components).length components`)
+  console.log(`  ${primitiveTokens.length} primitive · ${semanticTokens.length} semantic tokens · ${icons.length} icons · ${Object.keys(components).length} components`)
 
-  return { meta, tokens, icons, components, versions }
+  return { meta, primitiveTokens, semanticTokens, semanticTokensDark, icons, components, versions }
 }
 
-const { meta, tokens, icons, components, versions } = loadLatestData()
+const { meta, primitiveTokens, semanticTokens, semanticTokensDark, icons, components, versions } = loadLatestData()
 
 const baseIcons = icons
 const iconSet = new Set(icons.map(i => i.name).concat(icons.filter(i => i.hasMedium).map(i => `${i.name}_medium`)))
@@ -58,19 +62,19 @@ function createMcpServer() {
   // Tool: get_design_tokens
   server.tool(
     'get_design_tokens',
-    'Get DNB Eufemia design tokens: colors, spacing, typography, shadows, animation values. Filter by category or search by name/value.',
+    'Get DNB Eufemia design tokens. Use layer="semantic" (default) for the new semantic token system (--token-color-background-*, etc.), layer="primitive" for the base color palette (--color-sea-green, etc.), or layer="dark" for semantic dark mode values.',
     {
-      category: z.string().optional().describe('Filter by category prefix: "color", "spacing", "font", "line-height", "shadow", "animation"'),
-      search: z.string().optional().describe('Search by token name or value (e.g. "sea-green", "#007272", "0.25rem")')
+      layer: z.enum(['semantic', 'primitive', 'dark']).optional().describe('Token layer: "semantic" (default) — contextual tokens for building UI; "primitive" — base color palette; "dark" — semantic dark mode overrides'),
+      category: z.string().optional().describe('Filter by name fragment (e.g. "background", "action", "text", "color", "spacing")'),
+      search: z.string().optional().describe('Search by token name or value (e.g. "action", "#007272", "0.25rem")')
     },
-    async ({ category, search }) => {
-      let filtered = tokens
+    async ({ layer = 'semantic', category, search }) => {
+      const tokenMap = { semantic: semanticTokens, primitive: primitiveTokens, dark: semanticTokensDark }
+      let filtered = tokenMap[layer] ?? semanticTokens
 
       if (category) {
         const cat = category.toLowerCase()
-        filtered = filtered.filter(t =>
-          t.name.startsWith(`--${cat}-`) || t.name.includes(`-${cat}-`)
-        )
+        filtered = filtered.filter(t => t.name.toLowerCase().includes(cat))
       }
 
       if (search) {
@@ -81,6 +85,7 @@ function createMcpServer() {
       }
 
       const result = {
+        layer,
         total: filtered.length,
         note: filtered.length > 200 ? 'Results truncated to 200 — use category/search to narrow down' : undefined,
         tokens: filtered.slice(0, 200)
@@ -289,7 +294,6 @@ app.get('/health', (_, res) => {
     counts: meta.counts
   })
 })
-
 // ─── Start ────────────────────────────────────────────────────────────────────
 
 process.on('uncaughtException', err => console.error('Uncaught exception:', err))
@@ -298,6 +302,6 @@ process.on('unhandledRejection', err => console.error('Unhandled rejection:', er
 const PORT = process.env.PORT || 3456
 app.listen(PORT, () => {
   console.log(`\nEufemia MCP Server  http://localhost:${PORT}`)
-  console.log(`  Eufemia ${meta.eufemiaVersion}  ·  ${meta.counts.tokens} tokens · ${meta.counts.icons} icons · ${meta.counts.components} components`)
+  console.log(`  Eufemia ${meta.eufemiaVersion}  ·  ${meta.counts.primitiveTokens} primitive + ${meta.counts.semanticTokens} semantic tokens · ${meta.counts.icons} icons · ${meta.counts.components} components`)
   console.log(`  Available versions: ${versions.join(', ')}\n`)
 })

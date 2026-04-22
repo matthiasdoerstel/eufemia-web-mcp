@@ -8,7 +8,7 @@
  */
 
 import { execSync } from 'child_process'
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, readdirSync } from 'fs'
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, readdirSync, existsSync } from 'fs'
 import { tmpdir } from 'os'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -49,21 +49,41 @@ console.log('  Done.')
 // ─── Extract: tokens ──────────────────────────────────────────────────────────
 
 console.log('\nExtracting tokens...')
-// v11 renamed theme-ui/ → ui/
-const cssCandidates = [
-  path.join(pkgDir, 'style/themes/ui/ui-theme-properties.css'),
-  path.join(pkgDir, 'style/themes/theme-ui/ui-theme-properties.css'),
-]
-const cssPath = cssCandidates.find(p => { try { readFileSync(p); return true } catch { return false } })
-if (!cssPath) throw new Error('Could not find ui-theme-properties.css in package')
-const css = readFileSync(cssPath, 'utf-8')
-const tokens = []
-const tokenRegex = /--([a-z0-9][a-z0-9-]+):\s*([^;]+);/g
-let m
-while ((m = tokenRegex.exec(css)) !== null) {
-  tokens.push({ name: '--' + m[1], value: m[2].trim() })
+
+function parseCssTokens(filePath) {
+  if (!filePath) return []
+  const css = readFileSync(filePath, 'utf-8')
+  const results = []
+  const regex = /--([a-z0-9][a-z0-9-]+):\s*([^;]+);/g
+  let m
+  while ((m = regex.exec(css)) !== null) {
+    results.push({ name: '--' + m[1], value: m[2].trim() })
+  }
+  return results
 }
-console.log(`  ${tokens.length} tokens`)
+
+function findFile(...candidates) {
+  return candidates.find(p => existsSync(p)) || null
+}
+
+const themeDir = findFile(
+  path.join(pkgDir, 'style/themes/ui'),
+  path.join(pkgDir, 'style/themes/theme-ui')
+)
+if (!themeDir) throw new Error('Could not find theme directory in package')
+
+// Primitive tokens: --color-*, --spacing-*, etc.
+const primitiveTokens = parseCssTokens(path.join(themeDir, 'ui-theme-properties.css'))
+
+// Semantic tokens: --token-color-background-*, etc. (new in v11)
+const semanticTokens = parseCssTokens(findFile(path.join(themeDir, 'tokens.scss')))
+
+// Semantic dark mode overrides (new in v11)
+const semanticTokensDark = parseCssTokens(findFile(path.join(themeDir, 'tokens-dark.scss')))
+
+console.log(`  ${primitiveTokens.length} primitive tokens`)
+console.log(`  ${semanticTokens.length} semantic tokens`)
+console.log(`  ${semanticTokensDark.length} semantic dark tokens`)
 
 // ─── Extract: icons ───────────────────────────────────────────────────────────
 
@@ -168,18 +188,24 @@ writeFileSync(path.join(outputDir, 'meta.json'), JSON.stringify({
   eufemiaVersion: versionArg,
   extractedAt: new Date().toISOString(),
   counts: {
-    tokens: tokens.length,
+    primitiveTokens: primitiveTokens.length,
+    semanticTokens: semanticTokens.length,
+    semanticTokensDark: semanticTokensDark.length,
     icons: icons.length,
     components: componentList.length
   }
 }, null, 2))
 
-writeFileSync(path.join(outputDir, 'tokens.json'), JSON.stringify(tokens, null, 2))
+writeFileSync(path.join(outputDir, 'tokens-primitive.json'), JSON.stringify(primitiveTokens, null, 2))
+writeFileSync(path.join(outputDir, 'tokens-semantic.json'), JSON.stringify(semanticTokens, null, 2))
+writeFileSync(path.join(outputDir, 'tokens-semantic-dark.json'), JSON.stringify(semanticTokensDark, null, 2))
 writeFileSync(path.join(outputDir, 'icons.json'), JSON.stringify(icons, null, 2))
 writeFileSync(path.join(outputDir, 'components.json'), JSON.stringify(components, null, 2))
 
 console.log(`\n✓ Extracted to ${outputDir}`)
-console.log(`  eufemiaVersion : ${versionArg}`)
-console.log(`  tokens         : ${tokens.length}`)
-console.log(`  icons          : ${icons.length}`)
-console.log(`  components     : ${componentList.length}`)
+console.log(`  eufemiaVersion    : ${versionArg}`)
+console.log(`  primitive tokens  : ${primitiveTokens.length}`)
+console.log(`  semantic tokens   : ${semanticTokens.length}`)
+console.log(`  semantic dark     : ${semanticTokensDark.length}`)
+console.log(`  icons             : ${icons.length}`)
+console.log(`  components        : ${componentList.length}`)
