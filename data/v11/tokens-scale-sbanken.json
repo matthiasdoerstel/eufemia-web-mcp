@@ -512,6 +512,10 @@
     "value": "#fcfcfd"
   },
   {
+    "name": "--sbanken-greyscale-50",
+    "value": "#f9f9fd"
+  },
+  {
     "name": "--sbanken-greyscale-100",
     "value": "#f2f2f7"
   },
@@ -673,7 +677,7 @@
   },
   {
     "name": "--token-color-background-neutral-subtle",
-    "value": "var(--sbanken-greyscale-100)"
+    "value": "var(--sbanken-greyscale-50)"
   },
   {
     "name": "--token-color-background-neutral-base",
@@ -685,7 +689,7 @@
   },
   {
     "name": "--token-color-background-neutral-alternative",
-    "value": "var(\n    --sbanken-greyscale-100\n  )"
+    "value": "var(\n    --sbanken-greyscale-200\n  )"
   },
   {
     "name": "--token-color-background-info",
@@ -834,6 +838,10 @@
   {
     "name": "--token-color-text-positive-inverse",
     "value": "var(--sbanken-green-600)"
+  },
+  {
+    "name": "--token-color-text-error",
+    "value": "var(--sbanken-red-700)"
   },
   {
     "name": "--token-color-icon-action",
@@ -1352,6 +1360,34 @@
     "value": "var(\n    --sbanken-greyscale-300\n  )"
   },
   {
+    "name": "--token-radius-0",
+    "value": "0"
+  },
+  {
+    "name": "--token-radius-xs",
+    "value": "0.125rem"
+  },
+  {
+    "name": "--token-radius-sm",
+    "value": "0.25rem"
+  },
+  {
+    "name": "--token-radius-md",
+    "value": "0.5rem"
+  },
+  {
+    "name": "--token-radius-lg",
+    "value": "1rem"
+  },
+  {
+    "name": "--token-radius-xl",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--token-radius-full",
+    "value": "9999px"
+  },
+  {
     "name": "--sb-font-family-default",
     "value": "*\n */\n.dnb-typo-regular {\n  font-family: var(--sb-font-family-default)"
   },
@@ -1378,6 +1414,10 @@
   {
     "name": "--blockquote-cite-style",
     "value": "italic"
+  },
+  {
+    "name": "--hr-color",
+    "value": "var(--token-color-stroke-neutral-subtle)"
   },
   {
     "name": "--dashed",
@@ -1734,10 +1774,6 @@
   {
     "name": "--typography-h-medium-small-line-height",
     "value": "var(--line-height-basis)"
-  },
-  {
-    "name": "--hr-color",
-    "value": "var(--color-black-8)"
   },
   {
     "name": "--font-family-default",
@@ -2188,26 +2224,6 @@
     "value": "var(--sb-color-blue-dark)"
   },
   {
-    "name": "--scrollbar-track-width",
-    "value": "0.5rem"
-  },
-  {
-    "name": "--scrollbar-thumb-width",
-    "value": "0.5rem"
-  },
-  {
-    "name": "--scrollbar-track-color",
-    "value": "var(--sb-color-gray-light-2)"
-  },
-  {
-    "name": "--scrollbar-thumb-color",
-    "value": "var(--sb-color-gray-dark-3)"
-  },
-  {
-    "name": "--scrollbar-thumb-hover-color",
-    "value": "var(--sb-color-purple)"
-  },
-  {
     "name": "--skip-link-color",
     "value": "var(--sb-color-blue-dark)"
   },
@@ -2230,5 +2246,25 @@
   {
     "name": "--skip-link-background--active",
     "value": "var(--sb-color-white)"
+  },
+  {
+    "name": "--scrollbar-track-width",
+    "value": "0.5rem"
+  },
+  {
+    "name": "--scrollbar-thumb-width",
+    "value": "0.5rem"
+  },
+  {
+    "name": "--scrollbar-track-color",
+    "value": "var(--token-color-background-neutral-subtle)"
+  },
+  {
+    "name": "--scrollbar-thumb-color",
+    "value": "var(--token-color-background-action)"
+  },
+  {
+    "name": "--scrollbar-thumb-hover-color",
+    "value": "var(\n    --token-color-background-action-hover\n  )"
   }
 ]

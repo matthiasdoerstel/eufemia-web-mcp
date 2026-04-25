@@ -113,15 +113,15 @@
   },
   {
     "name": "--token-color-background-neutral-base",
-    "value": "var(--sbanken-greyscale-900)"
-  },
-  {
-    "name": "--token-color-background-neutral-bold",
     "value": "var(--sbanken-greyscale-800)"
   },
   {
+    "name": "--token-color-background-neutral-bold",
+    "value": "var(--sbanken-greyscale-700)"
+  },
+  {
     "name": "--token-color-background-neutral-alternative",
-    "value": "var(\n    --sbanken-greyscale-900\n  )"
+    "value": "var(\n    --sbanken-greyscale-950\n  )"
   },
   {
     "name": "--token-color-background-info",
@@ -270,6 +270,10 @@
   {
     "name": "--token-color-text-positive-inverse",
     "value": "var(--sbanken-green-700)"
+  },
+  {
+    "name": "--token-color-text-error",
+    "value": "var(--sbanken-orange-700)"
   },
   {
     "name": "--token-color-icon-action",
@@ -786,5 +790,33 @@
   {
     "name": "--token-color-component-progressbar-neutral-onsubtle",
     "value": "var(\n    --sbanken-greyscale-800\n  )"
+  },
+  {
+    "name": "--token-radius-0",
+    "value": "0"
+  },
+  {
+    "name": "--token-radius-xs",
+    "value": "0.125rem"
+  },
+  {
+    "name": "--token-radius-sm",
+    "value": "0.25rem"
+  },
+  {
+    "name": "--token-radius-md",
+    "value": "0.5rem"
+  },
+  {
+    "name": "--token-radius-lg",
+    "value": "1rem"
+  },
+  {
+    "name": "--token-radius-xl",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--token-radius-full",
+    "value": "9999px"
   }
 ]

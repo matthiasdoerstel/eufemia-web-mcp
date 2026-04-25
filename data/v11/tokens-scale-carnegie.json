@@ -508,6 +508,10 @@
     "value": "var(--carnegie-green-600)"
   },
   {
+    "name": "--token-color-text-error",
+    "value": "var(--carnegie-red-600)"
+  },
+  {
     "name": "--token-color-icon-action",
     "value": "var(--carnegie-greyscale-1000)"
   },
@@ -1024,6 +1028,34 @@
     "value": "var(\n    --carnegie-greyscale-200\n  )"
   },
   {
+    "name": "--token-radius-0",
+    "value": "0"
+  },
+  {
+    "name": "--token-radius-xs",
+    "value": "0"
+  },
+  {
+    "name": "--token-radius-sm",
+    "value": "0.125rem"
+  },
+  {
+    "name": "--token-radius-md",
+    "value": "0.125rem"
+  },
+  {
+    "name": "--token-radius-lg",
+    "value": "0.25rem"
+  },
+  {
+    "name": "--token-radius-xl",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--token-radius-full",
+    "value": "9999px"
+  },
+  {
     "name": "--font-family-default",
     "value": "*\n */\n/*\n * Typography\n *\n * The font-family properties are defined in the properties.scss file, like:\n * --font-family-default:\n *\n */\n.dnb-typo-regular {\n  font-family: var(--font-family-default)"
   },
@@ -1050,6 +1082,10 @@
   {
     "name": "--blockquote-cite-style",
     "value": "italic"
+  },
+  {
+    "name": "--hr-color",
+    "value": "var(--token-color-stroke-neutral-subtle)"
   },
   {
     "name": "--dashed",
@@ -1302,10 +1338,6 @@
   {
     "name": "--medium",
     "value": "not([class*=space__bottom]),\n.dnb-spacing .dnb-h--basis:not([class*=space__bottom]),\n.dnb-spacing .dnb-h--small:not([class*=space__bottom]),\n.dnb-spacing .dnb-h--x-small:not([class*=space__bottom]), .dnb-core-style .dnb-spacing .dnb-lead:not([class*=space__bottom]), .dnb-core-style .dnb-spacing .dnb-h--medium:not([class*=space__bottom]), .dnb-core-style .dnb-spacing .dnb-h--basis:not([class*=space__bottom]), .dnb-core-style .dnb-spacing .dnb-h--small:not([class*=space__bottom]), .dnb-core-style .dnb-spacing .dnb-h--x-small:not([class*=space__bottom]) {\n  margin-bottom: 1rem"
-  },
-  {
-    "name": "--hr-color",
-    "value": "var(--color-black-8)"
   },
   {
     "name": "--typography-h-xx-large-small-line-height",
@@ -1712,26 +1744,6 @@
     "value": "var(--color-emerald-green)"
   },
   {
-    "name": "--scrollbar-track-width",
-    "value": "0.5rem"
-  },
-  {
-    "name": "--scrollbar-thumb-width",
-    "value": "0.5rem"
-  },
-  {
-    "name": "--scrollbar-track-color",
-    "value": "var(--color-black-8)"
-  },
-  {
-    "name": "--scrollbar-thumb-color",
-    "value": "var(--color-sea-green)"
-  },
-  {
-    "name": "--scrollbar-thumb-hover-color",
-    "value": "var(--color-emerald-green)"
-  },
-  {
     "name": "--skip-link-color",
     "value": "var(--color-sea-green)"
   },
@@ -1754,5 +1766,25 @@
   {
     "name": "--skip-link-background--active",
     "value": "var(--color-emerald-green)"
+  },
+  {
+    "name": "--scrollbar-track-width",
+    "value": "0.5rem"
+  },
+  {
+    "name": "--scrollbar-thumb-width",
+    "value": "0.5rem"
+  },
+  {
+    "name": "--scrollbar-track-color",
+    "value": "var(--token-color-background-neutral-subtle)"
+  },
+  {
+    "name": "--scrollbar-thumb-color",
+    "value": "var(--token-color-background-action)"
+  },
+  {
+    "name": "--scrollbar-thumb-hover-color",
+    "value": "var(\n    --token-color-background-action-hover\n  )"
   }
 ]

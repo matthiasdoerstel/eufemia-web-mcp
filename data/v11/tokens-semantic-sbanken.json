@@ -109,7 +109,7 @@
   },
   {
     "name": "--token-color-background-neutral-subtle",
-    "value": "var(--sbanken-greyscale-100)"
+    "value": "var(--sbanken-greyscale-50)"
   },
   {
     "name": "--token-color-background-neutral-base",
@@ -121,7 +121,7 @@
   },
   {
     "name": "--token-color-background-neutral-alternative",
-    "value": "var(\n    --sbanken-greyscale-100\n  )"
+    "value": "var(\n    --sbanken-greyscale-200\n  )"
   },
   {
     "name": "--token-color-background-info",
@@ -270,6 +270,10 @@
   {
     "name": "--token-color-text-positive-inverse",
     "value": "var(--sbanken-green-600)"
+  },
+  {
+    "name": "--token-color-text-error",
+    "value": "var(--sbanken-red-700)"
   },
   {
     "name": "--token-color-icon-action",
@@ -786,5 +790,33 @@
   {
     "name": "--token-color-component-progressbar-neutral-onsubtle",
     "value": "var(\n    --sbanken-greyscale-300\n  )"
+  },
+  {
+    "name": "--token-radius-0",
+    "value": "0"
+  },
+  {
+    "name": "--token-radius-xs",
+    "value": "0.125rem"
+  },
+  {
+    "name": "--token-radius-sm",
+    "value": "0.25rem"
+  },
+  {
+    "name": "--token-radius-md",
+    "value": "0.5rem"
+  },
+  {
+    "name": "--token-radius-lg",
+    "value": "1rem"
+  },
+  {
+    "name": "--token-radius-xl",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--token-radius-full",
+    "value": "9999px"
   }
 ]

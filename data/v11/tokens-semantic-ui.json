@@ -272,6 +272,10 @@
     "value": "var(--dnb-green-600)"
   },
   {
+    "name": "--token-color-text-error",
+    "value": "var(--dnb-red-600)"
+  },
+  {
     "name": "--token-color-icon-action",
     "value": "var(--dnb-coldgreen-600)"
   },
@@ -786,5 +790,33 @@
   {
     "name": "--token-color-component-progressbar-neutral-onsubtle",
     "value": "var(\n    --dnb-greyscale-200\n  )"
+  },
+  {
+    "name": "--token-radius-0",
+    "value": "0"
+  },
+  {
+    "name": "--token-radius-xs",
+    "value": "0.125rem"
+  },
+  {
+    "name": "--token-radius-sm",
+    "value": "0.25rem"
+  },
+  {
+    "name": "--token-radius-md",
+    "value": "0.5rem"
+  },
+  {
+    "name": "--token-radius-lg",
+    "value": "1rem"
+  },
+  {
+    "name": "--token-radius-xl",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--token-radius-full",
+    "value": "9999px"
   }
 ]
