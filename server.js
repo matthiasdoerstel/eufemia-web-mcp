@@ -106,7 +106,7 @@ function createMcpServer() {
       if (search) {
         const q = search.toLowerCase()
         filtered = filtered.filter(t =>
-          t.name.toLowerCase().includes(q) || t.value.toLowerCase().includes(q)
+          t.name.toLowerCase().includes(q) || String(t.value).toLowerCase().includes(q)
         )
       }
 
@@ -230,8 +230,8 @@ function createMcpServer() {
     },
     async ({ query }) => {
       const q = query.toLowerCase()
-      const matches = baseIcons
-        .filter(i => i.name.includes(q))
+      const allMatches = baseIcons.filter(i => i.name.includes(q))
+      const matches = allMatches
         .slice(0, 60)
         .map(i => ({
           name: i.name,
@@ -245,6 +245,7 @@ function createMcpServer() {
       const result = {
         query,
         count: matches.length,
+        truncated: allMatches.length > 60 ? `Showing 60 of ${allMatches.length} results — use a more specific query` : undefined,
         note: matches.length === 0 ? 'No icons found. Try a shorter or different keyword.' : undefined,
         results: matches
       }
@@ -262,7 +263,7 @@ function toPascalCase(str) {
 }
 
 function toCamelCase(str) {
-  return str.replace(/(^[a-z])|_([a-z])/g, (_, a, b) => (a || b).toUpperCase())
+  return str.replace(/(^[a-z])|[-_]([a-z])/g, (_, a, b) => (a || b).toUpperCase())
 }
 
 // ─── HTTP + SSE Express App ───────────────────────────────────────────────────
@@ -283,9 +284,6 @@ app.get('/sse', async (req, res) => {
   res.write = (chunk, ...args) => {
     const str = chunk?.toString() || ''
     console.log(`← SSE write ${str.length} bytes: ${str.slice(0, 80).replace(/\n/g, '\\n')}`)
-    if (!str.startsWith(':')) {
-      return originalWrite(str + ': ' + ' '.repeat(16384) + '\n\n', ...args)
-    }
     return originalWrite(chunk, ...args)
   }
 
@@ -293,15 +291,25 @@ app.get('/sse', async (req, res) => {
   res.on('close', () => clearInterval(keepalive))
 
   const transport = new SSEServerTransport('/message', res)
-  sessions[transport.sessionId] = transport
+  if (transport.sessionId) {
+    sessions[transport.sessionId] = transport
+  }
   res.on('close', () => {
-    delete sessions[transport.sessionId]
+    if (transport.sessionId) {
+      delete sessions[transport.sessionId]
+    }
     console.log(`↙ Session disconnected: ${transport.sessionId}`)
   })
 
   console.log(`↗ New session: ${transport.sessionId}`)
   const mcpServer = createMcpServer()
-  await mcpServer.connect(transport)
+  try {
+    await mcpServer.connect(transport)
+  } catch (err) {
+    console.error(`Failed to connect MCP server for session ${transport.sessionId}:`, err)
+    if (transport.sessionId) delete sessions[transport.sessionId]
+    if (!res.headersSent) res.status(500).end()
+  }
 })
 
 app.post('/message', async (req, res) => {
@@ -309,7 +317,12 @@ app.post('/message', async (req, res) => {
   const transport = sessions[sessionId]
   console.log(`→ POST /message session=${sessionId} method=${req.body?.method}`)
   if (!transport) return res.status(404).json({ error: `Session not found: ${sessionId}` })
-  await transport.handlePostMessage(req, res, req.body)
+  try {
+    await transport.handlePostMessage(req, res, req.body)
+  } catch (err) {
+    console.error(`Error handling message for session ${sessionId}:`, err)
+    if (!res.headersSent) res.status(500).json({ error: 'Internal server error' })
+  }
 })
 
 app.get('/health', (_, res) => {

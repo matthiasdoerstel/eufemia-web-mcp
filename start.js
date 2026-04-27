@@ -9,6 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const PORT = process.env.PORT || 3456
 
 let tunnelStarted = false
+let restartCount = 0
 
 function startServer() {
   console.log('Starting Eufemia MCP server...\n')
@@ -17,9 +18,15 @@ function startServer() {
     env: { ...process.env, PORT }
   })
 
+  const startedAt = Date.now()
+
   server.on('close', code => {
-    console.log(`\nServer exited (code ${code}), restarting in 2s...`)
-    setTimeout(startServer, 2000)
+    const uptime = Date.now() - startedAt
+    if (uptime > 10000) restartCount = 0 // reset backoff after stable run
+    const delay = Math.min(1000 * Math.pow(2, restartCount), 30000)
+    restartCount++
+    console.log(`\nServer exited (code ${code}), restarting in ${delay / 1000}s... (attempt ${restartCount})`)
+    setTimeout(startServer, delay)
   })
 
   if (!tunnelStarted) {
