@@ -70,6 +70,25 @@ const baseIcons = icons
 const iconSet = new Set(icons.map(i => i.name).concat(icons.filter(i => i.hasMedium).map(i => `${i.name}_medium`)))
 const componentList = Object.keys(components)
 
+// Resolve component by name, handling dot notation (Field.String → forms/field/string)
+// and partial path suffix matching (field/string → forms/field/string)
+function resolveComponent(input) {
+  const normalised = input.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '/')
+  if (components[normalised]) return { key: normalised, data: components[normalised] }
+  const match = componentList.find(k => k === normalised || k.endsWith('/' + normalised))
+  return match ? { key: match, data: components[match] } : null
+}
+
+// Build the import statement for a component entry
+function importStatement(data) {
+  const importBase = data.importBase ?? '@dnb/eufemia'
+  if (data.namespace) {
+    // e.g. Field.String → import { Field } from '@dnb/eufemia/extensions/forms'
+    return `import { ${data.namespace} } from '${importBase}'\n// Usage: <${data.namespace}.${data.subName} .../>`
+  }
+  return `import { ${toPascalCase(data.name)} } from '${importBase}'`
+}
+
 // ─── MCP Server factory ───────────────────────────────────────────────────────
 
 function createMcpServer() {
@@ -130,24 +149,29 @@ function createMcpServer() {
       component: z.string().describe('Component name in kebab-case (e.g. "button", "input", "modal", "breadcrumb", "date-picker")')
     },
     async ({ component }) => {
-      const name = component.toLowerCase().replace(/\s+/g, '-')
-      const data = components[name]
+      const resolved = resolveComponent(component)
 
-      if (!data) {
-        const close = componentList.filter(c => c.includes(name) || name.includes(c))
+      if (!resolved) {
+        const q = component.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '/')
+        const close = componentList.filter(c => c.includes(q) || q.includes(c.split('/').pop()))
         const suggestion = close.length > 0
           ? ` Did you mean: ${close.slice(0, 5).join(', ')}?`
           : ' Use search_components to find available components.'
         return {
-          content: [{ type: 'text', text: `Component "${name}" not found.${suggestion}` }],
+          content: [{ type: 'text', text: `Component "${component}" not found.${suggestion}` }],
           isError: true
         }
       }
 
+      const { key, data } = resolved
+      const docsSlug = data.namespace
+        ? `extensions/forms/${data.namespace}/${data.subName}`
+        : key
+
       const text = [
-        `## Import\n\n\`\`\`tsx\nimport { ${toPascalCase(name)} } from '@dnb/eufemia'\n\`\`\``,
+        `## Import\n\n\`\`\`tsx\n${importStatement(data)}\n\`\`\``,
         data.guidelines || '_No guidelines available._',
-        data.guidelines ? `\n## Relevant links\n\n- [Figma](https://www.figma.com/design/cdtwQD8IJ7pTeE45U148r1/%F0%9F%92%BB-Eufemia---Web)\n- [Docs](https://eufemia.dnb.no/uilib/components/${name}/)` : ''
+        data.guidelines ? `\n## Relevant links\n\n- [Figma](https://www.figma.com/design/cdtwQD8IJ7pTeE45U148r1/%F0%9F%92%BB-Eufemia---Web)\n- [Docs](https://eufemia.dnb.no/uilib/${docsSlug}/)` : ''
       ].join('\n\n')
 
       return { content: [{ type: 'text', text }] }
@@ -159,32 +183,32 @@ function createMcpServer() {
     'get_component_code',
     'Get the real React implementation for an Eufemia component. IMPORTANT: You MUST import and use the component directly from @dnb/eufemia — do NOT recreate, reimplement, or restyle it with custom CSS. The component is already fully styled. Just use the import and JSX examples exactly as shown. Do not wrap it in a custom component.',
     {
-      component: z.string().describe('Component name in kebab-case (e.g. "button", "input", "modal", "date-picker")')
+      component: z.string().describe('Component name in kebab-case (e.g. "button", "input", "modal", "date-picker") or dot notation for forms sub-components (e.g. "Field.String", "Form.Handler")')
     },
     async ({ component }) => {
-      const name = component.toLowerCase().replace(/\s+/g, '-')
-      const data = components[name]
+      const resolved = resolveComponent(component)
 
-      if (!data) {
-        const close = componentList.filter(c => c.includes(name) || name.includes(c))
+      if (!resolved) {
+        const q = component.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '/')
+        const close = componentList.filter(c => c.includes(q) || q.includes(c.split('/').pop()))
         const suggestion = close.length > 0
           ? ` Did you mean: ${close.slice(0, 5).join(', ')}?`
           : ' Use search_components to find available components.'
         return {
-          content: [{ type: 'text', text: `Component "${name}" not found.${suggestion}` }],
+          content: [{ type: 'text', text: `Component "${component}" not found.${suggestion}` }],
           isError: true
         }
       }
 
-      const pascal = toPascalCase(name)
+      const { key, data } = resolved
       const sections = [
-        `## Import\n\`\`\`tsx\nimport { ${pascal} } from '@dnb/eufemia'\n\`\`\`\n\n> **IMPORTANT:** Use this import directly. Do NOT recreate or reimplement this component with custom CSS or wrappers. It is already fully styled by Eufemia.`
+        `## Import\n\`\`\`tsx\n${importStatement(data)}\n\`\`\`\n\n> **IMPORTANT:** Use this import directly. Do NOT recreate or reimplement this component with custom CSS or wrappers. It is already fully styled by Eufemia.`
       ]
 
       if (data.code) {
         sections.push(`## Code Examples\n\`\`\`tsx\n${data.code}\n\`\`\``)
       } else {
-        sections.push(`## Code Examples\nNot available for "${name}".`)
+        sections.push(`## Code Examples\nNot available for "${data.name}".`)
       }
 
       if (data.props?.length > 0) {
@@ -193,7 +217,10 @@ function createMcpServer() {
         )
         sections.push(`## Props\n| Prop | Status | Type | Description |\n|------|--------|------|-------------|\n${rows.join('\n')}`)
       } else {
-        sections.push(`## Props\nCheck https://eufemia.dnb.no/uilib/components/${name}/properties/`)
+        const docsSlug = data.namespace
+          ? `extensions/forms/${data.namespace}/${data.subName}`
+          : key
+        sections.push(`## Props\nCheck https://eufemia.dnb.no/uilib/${docsSlug}/properties/`)
       }
 
       return { content: [{ type: 'text', text: sections.join('\n\n') }] }
@@ -205,17 +232,21 @@ function createMcpServer() {
     'search_components',
     'Search available Eufemia components by name or keyword. Returns component names with links to guidelines and documentation.',
     {
-      query: z.string().describe('Search query (e.g. "button", "form", "nav", "table", "date", "input")')
+      query: z.string().describe('Search query (e.g. "button", "form", "Field", "Field.String", "Form.Handler", "input", "paragraph")')
     },
     async ({ query }) => {
-      const q = query.toLowerCase()
+      const q = query.toLowerCase().replace(/\./g, '/')
       const matches = componentList
-        .filter(name => name.includes(q))
-        .map(name => ({
-          name,
-          guidelines: `Use get_component_guidelines with component="${name}"`,
-          docs: `https://eufemia.dnb.no/uilib/components/${name}/`
-        }))
+        .filter(key => key.includes(q) || components[key].name?.toLowerCase().includes(q))
+        .map(key => {
+          const data = components[key]
+          return {
+            key,
+            name: data.name,
+            section: data.section,
+            docs: `https://eufemia.dnb.no/uilib/${data.namespace ? `extensions/forms/${data.namespace}/${data.subName}` : key}/`,
+          }
+        })
 
       return { content: [{ type: 'text', text: JSON.stringify({ query, count: matches.length, results: matches }, null, 2) }] }
     }
