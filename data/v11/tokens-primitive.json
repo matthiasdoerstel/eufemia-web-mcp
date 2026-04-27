@@ -1,0 +1,354 @@
+[
+  {
+    "name": "--font-family-default",
+    "value": "'DNB', sans-serif"
+  },
+  {
+    "name": "--font-family-heading",
+    "value": "var(--font-family-default)"
+  },
+  {
+    "name": "--font-family-monospace",
+    "value": "'DNBMono', 'Menlo', 'Consolas', 'Roboto Mono', 'Ubuntu Monospace',\n    'Noto Mono', 'Oxygen Mono', 'Liberation Mono', monospace"
+  },
+  {
+    "name": "--font-weight-default",
+    "value": "normal"
+  },
+  {
+    "name": "--font-weight-basis",
+    "value": "normal"
+  },
+  {
+    "name": "--font-weight-regular",
+    "value": "normal"
+  },
+  {
+    "name": "--font-weight-medium",
+    "value": "500"
+  },
+  {
+    "name": "--font-weight-bold",
+    "value": "600"
+  },
+  {
+    "name": "--font-size-x-small",
+    "value": "0.875rem"
+  },
+  {
+    "name": "--font-size-small",
+    "value": "1rem"
+  },
+  {
+    "name": "--font-size-basis",
+    "value": "1.125rem"
+  },
+  {
+    "name": "--font-size-basis--em",
+    "value": "1em"
+  },
+  {
+    "name": "--font-size-lead",
+    "value": "var(--font-size-medium)"
+  },
+  {
+    "name": "--font-size-medium",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--font-size-large",
+    "value": "1.625rem"
+  },
+  {
+    "name": "--font-size-x-large",
+    "value": "2.125rem"
+  },
+  {
+    "name": "--font-size-xx-large",
+    "value": "3rem"
+  },
+  {
+    "name": "--line-height-xx-small--em",
+    "value": "1em"
+  },
+  {
+    "name": "--line-height-x-small",
+    "value": "1.125rem"
+  },
+  {
+    "name": "--line-height-small",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--line-height-basis",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--line-height-basis--em",
+    "value": "1.333em"
+  },
+  {
+    "name": "--line-height-lead",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--line-height-medium",
+    "value": "2rem"
+  },
+  {
+    "name": "--line-height-large",
+    "value": "2.5rem"
+  },
+  {
+    "name": "--line-height-x-large",
+    "value": "3.5rem"
+  },
+  {
+    "name": "--line-height-xx-large",
+    "value": "var(--line-height-x-large)"
+  },
+  {
+    "name": "--color-mint-green-50",
+    "value": "#d2f0e9"
+  },
+  {
+    "name": "--color-mint-green-25",
+    "value": "#e9f8f4"
+  },
+  {
+    "name": "--color-mint-green-12",
+    "value": "#f4fbf9"
+  },
+  {
+    "name": "--color-sea-green-30",
+    "value": "#b3d5d5"
+  },
+  {
+    "name": "--color-accent-yellow-30",
+    "value": "#feebc1"
+  },
+  {
+    "name": "--color-signal-orange",
+    "value": "#ff5400"
+  },
+  {
+    "name": "--color-fire-red",
+    "value": "#dc2a2a"
+  },
+  {
+    "name": "--color-success-green",
+    "value": "#007b5e"
+  },
+  {
+    "name": "--color-fire-red-8",
+    "value": "#fdeeee"
+  },
+  {
+    "name": "--color-black",
+    "value": "#000"
+  },
+  {
+    "name": "--color-black-80",
+    "value": "#333"
+  },
+  {
+    "name": "--color-black-55",
+    "value": "#737373"
+  },
+  {
+    "name": "--color-black-20",
+    "value": "#ccc"
+  },
+  {
+    "name": "--color-black-8",
+    "value": "#ebebeb"
+  },
+  {
+    "name": "--color-black-3",
+    "value": "#f8f8f8"
+  },
+  {
+    "name": "--color-white",
+    "value": "#fff"
+  },
+  {
+    "name": "--color-black-border",
+    "value": "#cdcdcd"
+  },
+  {
+    "name": "--color-black-background",
+    "value": "#fafafa"
+  },
+  {
+    "name": "--color-sea-green",
+    "value": "#007272"
+  },
+  {
+    "name": "--color-mint-green",
+    "value": "#a5e1d2"
+  },
+  {
+    "name": "--color-summer-green",
+    "value": "#28b482"
+  },
+  {
+    "name": "--color-emerald-green",
+    "value": "#14555a"
+  },
+  {
+    "name": "--color-ocean-green",
+    "value": "#00343e"
+  },
+  {
+    "name": "--color-accent-yellow",
+    "value": "#fdbb31"
+  },
+  {
+    "name": "--color-indigo",
+    "value": "#23195a"
+  },
+  {
+    "name": "--color-violet",
+    "value": "#6e2382"
+  },
+  {
+    "name": "--color-sky-blue",
+    "value": "#4bbed2"
+  },
+  {
+    "name": "--color-lavender",
+    "value": "#f2f2f5"
+  },
+  {
+    "name": "--color-sand-yellow",
+    "value": "#fbf6ec"
+  },
+  {
+    "name": "--color-pistachio",
+    "value": "#f2f4ec"
+  },
+  {
+    "name": "--color-mint-green-alt",
+    "value": "#ebfffa"
+  },
+  {
+    "name": "--color-indigo-medium",
+    "value": "#6e6491"
+  },
+  {
+    "name": "--color-indigo-light",
+    "value": "#b9afc8"
+  },
+  {
+    "name": "--color-violet-medium",
+    "value": "#a06eaf"
+  },
+  {
+    "name": "--color-violet-light",
+    "value": "#cfb9d7"
+  },
+  {
+    "name": "--color-sky-blue-medium",
+    "value": "#87d2e1"
+  },
+  {
+    "name": "--color-sky-blue-light",
+    "value": "#c3ebf0"
+  },
+  {
+    "name": "--spacing-xx-small",
+    "value": "0.25rem"
+  },
+  {
+    "name": "--spacing-x-small",
+    "value": "0.5rem"
+  },
+  {
+    "name": "--spacing-small",
+    "value": "1rem"
+  },
+  {
+    "name": "--spacing-medium",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--spacing-large",
+    "value": "2rem"
+  },
+  {
+    "name": "--spacing-x-large",
+    "value": "3rem"
+  },
+  {
+    "name": "--spacing-xx-large",
+    "value": "3.5rem"
+  },
+  {
+    "name": "--layout-small",
+    "value": "40em"
+  },
+  {
+    "name": "--layout-medium",
+    "value": "60em"
+  },
+  {
+    "name": "--layout-large",
+    "value": "72em"
+  },
+  {
+    "name": "--layout-x-large",
+    "value": "80em"
+  },
+  {
+    "name": "--layout-xx-large",
+    "value": "90em"
+  },
+  {
+    "name": "--shadow-default",
+    "value": "0 8px 16px rgb(51 51 51 / 8%)"
+  },
+  {
+    "name": "--shadow-default-x",
+    "value": "0"
+  },
+  {
+    "name": "--shadow-default-y",
+    "value": "8px"
+  },
+  {
+    "name": "--shadow-default-blur-radius",
+    "value": "16px"
+  },
+  {
+    "name": "--shadow-default-color",
+    "value": "rgb(51 51 51 / 8%)"
+  },
+  {
+    "name": "--shadow-sharp",
+    "value": "0 1px 6px rgb(0 0 0 / 16%)"
+  },
+  {
+    "name": "--shadow-sharp-x",
+    "value": "0"
+  },
+  {
+    "name": "--shadow-sharp-y",
+    "value": "1px"
+  },
+  {
+    "name": "--shadow-sharp-blur-radius",
+    "value": "6px"
+  },
+  {
+    "name": "--shadow-sharp-color",
+    "value": "rgb(0 0 0 / 16%)"
+  },
+  {
+    "name": "--easing-default",
+    "value": "cubic-bezier(0.42, 0, 0, 1)"
+  },
+  {
+    "name": "--prose-max-width",
+    "value": "60ch"
+  }
+]
