@@ -107,12 +107,19 @@ const SINGLE_EXTENSIONS = [
 ]
 
 // Forms: namespaces with sub-components
-const FORMS_NAMESPACES = ['Form', 'Field', 'Iterate', 'Value', 'Wizard']
+// Field is split across base-fields/ and feature-fields/ in the docs portal
+const FORMS_NAMESPACES = [
+  { name: 'Form',    docsPaths: ['Form'] },
+  { name: 'Field',   docsPaths: ['base-fields', 'feature-fields'] },
+  { name: 'Iterate', docsPaths: ['Iterate'] },
+  { name: 'Value',   docsPaths: ['Value'] },
+  { name: 'Wizard',  docsPaths: ['Wizard'] },
+]
 // Skip internal/utility directories that aren't usable components
 const FORMS_SKIP = new Set([
   'style', 'hooks', 'stories', 'Context', 'DataContext',
   'Element', 'Appearance', 'Snapshot', 'Composition',
-  'Indeterminate', 'Provider',
+  'Indeterminate', 'Provider', 'more-fields',
 ])
 
 // ─── Install package ──────────────────────────────────────────────────────────
@@ -323,18 +330,28 @@ if (formsInfoRaw) {
 }
 
 let formsCount = 0
-for (const namespace of FORMS_NAMESPACES) {
-  const subDirs = await listDirs(`${FORMS_DOCS_BASE}/${namespace}`)
-  // Only take PascalCase directories (component names) that aren't in the skip list
-  const subComponents = subDirs.filter(n => /^[A-Z]/.test(n) && !FORMS_SKIP.has(n))
+for (const { name: namespace, docsPaths } of FORMS_NAMESPACES) {
+  // Collect sub-components with the docsSubPath they came from
+  const subComponents = []
+  for (const docsSubPath of docsPaths) {
+    const subDirs = await listDirs(`${FORMS_DOCS_BASE}/${docsSubPath}`)
+    for (const n of subDirs) {
+      if (/^[A-Z]/.test(n) && !FORMS_SKIP.has(n)) {
+        subComponents.push({ subName: n, docsSubPath })
+      }
+    }
+  }
   console.log(`    ${namespace}: ${subComponents.length} sub-components`)
 
-  for (const subName of subComponents) {
+  for (const { subName, docsSubPath } of subComponents) {
     const key = `forms/${namespace.toLowerCase()}/${subName.toLowerCase()}`
-    // Docs.ts lives at src/extensions/forms/{Namespace}/{SubName}/{SubName}Docs.ts
-    const docsRaw = await ghRaw(`${FORMS_SRC_BASE}/${namespace}/${subName}/${subName}Docs.ts`)
-    const infoRaw = await ghRaw(`${FORMS_DOCS_BASE}/${namespace}/${subName}/info.mdx`)
-    const codeRaw = await ghRaw(`${FORMS_DOCS_BASE}/${namespace}/${subName}/Examples.tsx`)
+    const docsBase = `${FORMS_DOCS_BASE}/${docsSubPath}/${subName}`
+
+    const [infoRaw, codeRaw, docsRaw] = await Promise.all([
+      ghRaw(`${docsBase}/info.mdx`),
+      ghRaw(`${docsBase}/Examples.tsx`),
+      ghRaw(`${FORMS_SRC_BASE}/${namespace}/${subName}/${subName}Docs.ts`),
+    ])
 
     if (!infoRaw && !codeRaw && !docsRaw) {
       process.stdout.write('.')
