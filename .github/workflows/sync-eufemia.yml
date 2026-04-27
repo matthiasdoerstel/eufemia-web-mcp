@@ -74,11 +74,15 @@ jobs:
             fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
           "
 
+      - name: Update lock file
+        if: steps.check.outputs.skip != 'true'
+        run: npm install
+
       - name: Commit and push
         if: steps.check.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ package.json
+          git add data/ package.json package-lock.json
           git commit -m "chore: sync Eufemia ${{ steps.version.outputs.version }} data"
           git push
