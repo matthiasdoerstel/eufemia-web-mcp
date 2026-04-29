@@ -1948,14 +1948,6 @@
     "value": "#fff"
   },
   {
-    "name": "--color-black-border",
-    "value": "#cdcdcd"
-  },
-  {
-    "name": "--color-black-background",
-    "value": "#fafafa"
-  },
-  {
     "name": "--color-sea-green",
     "value": "#007272"
   },
@@ -2002,34 +1994,6 @@
   {
     "name": "--color-pistachio",
     "value": "#f2f4ec"
-  },
-  {
-    "name": "--color-mint-green-alt",
-    "value": "#ebfffa"
-  },
-  {
-    "name": "--color-indigo-medium",
-    "value": "#6e6491"
-  },
-  {
-    "name": "--color-indigo-light",
-    "value": "#b9afc8"
-  },
-  {
-    "name": "--color-violet-medium",
-    "value": "#a06eaf"
-  },
-  {
-    "name": "--color-violet-light",
-    "value": "#cfb9d7"
-  },
-  {
-    "name": "--color-sky-blue-medium",
-    "value": "#87d2e1"
-  },
-  {
-    "name": "--color-sky-blue-light",
-    "value": "#c3ebf0"
   },
   {
     "name": "--spacing-xx-small",
@@ -2222,30 +2186,6 @@
   {
     "name": "--focus-ring-color",
     "value": "var(--sb-color-blue-dark)"
-  },
-  {
-    "name": "--skip-link-color",
-    "value": "var(--sb-color-blue-dark)"
-  },
-  {
-    "name": "--skip-link-color--hover",
-    "value": "var(--sb-color-purple-alternative)"
-  },
-  {
-    "name": "--skip-link-color--active",
-    "value": "var(--sb-color-purple-alternative)"
-  },
-  {
-    "name": "--skip-link-background",
-    "value": "var(--sb-color-blue-light-3)"
-  },
-  {
-    "name": "--skip-link-background--hover",
-    "value": "var(--sb-color-green)"
-  },
-  {
-    "name": "--skip-link-background--active",
-    "value": "var(--sb-color-white)"
   },
   {
     "name": "--scrollbar-track-width",
