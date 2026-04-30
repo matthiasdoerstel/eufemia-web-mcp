@@ -232,6 +232,10 @@
     "value": "var(--carnegie-greyscale-500)"
   },
   {
+    "name": "--token-color-text-neutral-alternative-inverse",
+    "value": "var(\n    --carnegie-greyscale-200\n  )"
+  },
+  {
     "name": "--token-color-text-neutral-inverse",
     "value": "var(--carnegie-greyscale-0)"
   },

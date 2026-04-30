@@ -800,6 +800,10 @@
     "value": "var(--sbanken-greyscale-600)"
   },
   {
+    "name": "--token-color-text-neutral-alternative-inverse",
+    "value": "var(\n    --sbanken-greyscale-400\n  )"
+  },
+  {
     "name": "--token-color-text-neutral-inverse",
     "value": "var(--sbanken-greyscale-0)"
   },

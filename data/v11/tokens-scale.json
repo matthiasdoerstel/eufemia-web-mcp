@@ -780,6 +780,10 @@
     "value": "var(--dnb-greyscale-500)"
   },
   {
+    "name": "--token-color-text-neutral-alternative-inverse",
+    "value": "var(--dnb-greyscale-200)"
+  },
+  {
     "name": "--token-color-text-neutral-inverse",
     "value": "var(--dnb-greyscale-0)"
   },

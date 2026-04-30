@@ -232,6 +232,10 @@
     "value": "var(--dnb-greyscale-400)"
   },
   {
+    "name": "--token-color-text-neutral-alternative-inverse",
+    "value": "var(--dnb-greyscale-600)"
+  },
+  {
     "name": "--token-color-text-neutral-inverse",
     "value": "var(--dnb-greyscale-800)"
   },
