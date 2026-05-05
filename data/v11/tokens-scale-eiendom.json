@@ -1733,11 +1733,7 @@
   },
   {
     "name": "--focus-ring-width",
-    "value": "0.125rem"
-  },
-  {
-    "name": "--focus-ring-color",
-    "value": "var(--color-emerald-green)"
+    "value": "0.25rem"
   },
   {
     "name": "--scrollbar-track-width",

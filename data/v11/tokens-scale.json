@@ -316,6 +316,10 @@
     "value": "60ch"
   },
   {
+    "name": "--focus-ring-width",
+    "value": "0.25rem"
+  },
+  {
     "name": "--dnb-coldgreen-100",
     "value": "#d8f3ec"
   },
@@ -1690,14 +1694,6 @@
   {
     "name": "--typography-h-small-small-line-height",
     "value": "var(--line-height-small)"
-  },
-  {
-    "name": "--focus-ring-width",
-    "value": "0.125rem"
-  },
-  {
-    "name": "--focus-ring-color",
-    "value": "var(--color-emerald-green)"
   },
   {
     "name": "--scrollbar-track-width",

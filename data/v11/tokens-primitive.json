@@ -314,5 +314,9 @@
   {
     "name": "--prose-max-width",
     "value": "60ch"
+  },
+  {
+    "name": "--focus-ring-width",
+    "value": "0.25rem"
   }
 ]

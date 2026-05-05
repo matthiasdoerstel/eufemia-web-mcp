@@ -1696,20 +1696,16 @@
     "value": "60ch"
   },
   {
+    "name": "--focus-ring-width",
+    "value": "0.25rem"
+  },
+  {
     "name": "--font-family-heading",
     "value": "var(--ca-font-family-heading)"
   },
   {
     "name": "--color-sea-green",
     "value": "var(--ca-color-ocean-green)"
-  },
-  {
-    "name": "--focus-ring-width",
-    "value": "0.125rem"
-  },
-  {
-    "name": "--focus-ring-color",
-    "value": "var(--color-emerald-green)"
   },
   {
     "name": "--scrollbar-track-width",

@@ -2096,6 +2096,10 @@
     "value": "60ch"
   },
   {
+    "name": "--focus-ring-width",
+    "value": "0.25rem"
+  },
+  {
     "name": "--font-family-default",
     "value": "var(--sb-font-family-default)"
   },
@@ -2182,14 +2186,6 @@
   {
     "name": "--line-height-xx-large",
     "value": "var(--sb-line-height-xx-large)"
-  },
-  {
-    "name": "--focus-ring-width",
-    "value": "0.1875rem"
-  },
-  {
-    "name": "--focus-ring-color",
-    "value": "var(--sb-color-blue-dark)"
   },
   {
     "name": "--scrollbar-track-width",
