@@ -1408,6 +1408,10 @@
     "value": "var(--token-color-stroke-neutral-subtle)"
   },
   {
+    "name": "--hr-color",
+    "value": "var(--token-color-stroke-neutral-ondark)"
+  },
+  {
     "name": "--dashed",
     "value": ":after {\n  background-image: linear-gradient(to right, var(--hr-color, grey) 50%, transparent 0%)"
   },
