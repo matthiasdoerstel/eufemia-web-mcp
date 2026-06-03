@@ -68,10 +68,6 @@
     "value": "#fff"
   },
   {
-    "name": "--carnegie-greyscale-25",
-    "value": "#fafafa"
-  },
-  {
     "name": "--carnegie-greyscale-50",
     "value": "#f8f8f8"
   },
@@ -180,10 +176,6 @@
     "value": "#f2f2f5"
   },
   {
-    "name": "--carnegie-blue-100",
-    "value": "#e1e9f9"
-  },
-  {
     "name": "--carnegie-blue-600",
     "value": "#276ace"
   },
@@ -212,6 +204,10 @@
     "value": "#fcdddd"
   },
   {
+    "name": "--carnegie-red-500",
+    "value": "#ed4c4c"
+  },
+  {
     "name": "--carnegie-red-600",
     "value": "#d52525"
   },
@@ -230,10 +226,6 @@
   {
     "name": "--carnegie-yellow-800",
     "value": "#805b0e"
-  },
-  {
-    "name": "--carnegie-orange-600",
-    "value": "#ff5400"
   },
   {
     "name": "--token-color-background-page-background",
@@ -265,7 +257,7 @@
   },
   {
     "name": "--token-color-background-action-focus-subtle",
-    "value": "var(--carnegie-blue-100)"
+    "value": "var(--carnegie-blue-50)"
   },
   {
     "name": "--token-color-background-action-disabled",
@@ -488,12 +480,12 @@
     "value": "var(--carnegie-greyscale-200)"
   },
   {
-    "name": "--token-color-text-destructive",
+    "name": "--token-color-text-error",
     "value": "var(--carnegie-red-600)"
   },
   {
-    "name": "--token-color-text-destructive-inverse",
-    "value": "var(--carnegie-orange-600)"
+    "name": "--token-color-text-error-inverse",
+    "value": "var(--carnegie-red-500)"
   },
   {
     "name": "--token-color-text-warning",
@@ -510,10 +502,6 @@
   {
     "name": "--token-color-text-positive-inverse",
     "value": "var(--carnegie-green-600)"
-  },
-  {
-    "name": "--token-color-text-error",
-    "value": "var(--carnegie-red-600)"
   },
   {
     "name": "--token-color-icon-action",
@@ -596,10 +584,6 @@
     "value": "var(--carnegie-greyscale-500)"
   },
   {
-    "name": "--token-color-icon-destructive",
-    "value": "var(--carnegie-red-600)"
-  },
-  {
     "name": "--token-color-icon-info",
     "value": "var(--carnegie-coldgreen-600)"
   },
@@ -673,7 +657,7 @@
   },
   {
     "name": "--token-color-stroke-action-focus-subtle",
-    "value": "var(--carnegie-blue-100)"
+    "value": "var(--carnegie-greyscale-0)"
   },
   {
     "name": "--token-color-stroke-action-disabled",
@@ -1014,10 +998,6 @@
   {
     "name": "--token-color-component-tooltip-background-neutral",
     "value": "var(\n    --carnegie-greyscale-800\n  )"
-  },
-  {
-    "name": "--token-color-component-table-background-neutral-alternative",
-    "value": "var(\n    --carnegie-greyscale-25\n  )"
   },
   {
     "name": "--token-color-component-dimmer-background",

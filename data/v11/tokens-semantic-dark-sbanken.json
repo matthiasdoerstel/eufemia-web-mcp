@@ -109,15 +109,15 @@
   },
   {
     "name": "--token-color-background-neutral-subtle",
-    "value": "var(--sbanken-greyscale-900)"
-  },
-  {
-    "name": "--token-color-background-neutral-base",
     "value": "var(--sbanken-greyscale-800)"
   },
   {
-    "name": "--token-color-background-neutral-bold",
+    "name": "--token-color-background-neutral-base",
     "value": "var(--sbanken-greyscale-700)"
+  },
+  {
+    "name": "--token-color-background-neutral-bold",
+    "value": "var(--sbanken-greyscale-600)"
   },
   {
     "name": "--token-color-background-neutral-alternative",
@@ -153,7 +153,7 @@
   },
   {
     "name": "--token-color-background-error-subtle",
-    "value": "var(--sbanken-orange-950)"
+    "value": "var(--sbanken-red-950)"
   },
   {
     "name": "--token-color-background-marketing",
@@ -252,12 +252,12 @@
     "value": "var(--sbanken-greyscale-200)"
   },
   {
-    "name": "--token-color-text-destructive",
-    "value": "var(--sbanken-orange-500)"
+    "name": "--token-color-text-error",
+    "value": "var(--sbanken-red-600)"
   },
   {
-    "name": "--token-color-text-destructive-inverse",
-    "value": "var(--sbanken-orange-800)"
+    "name": "--token-color-text-error-inverse",
+    "value": "var(--sbanken-red-950)"
   },
   {
     "name": "--token-color-text-warning",
@@ -274,10 +274,6 @@
   {
     "name": "--token-color-text-positive-inverse",
     "value": "var(--sbanken-green-700)"
-  },
-  {
-    "name": "--token-color-text-error",
-    "value": "var(--sbanken-orange-700)"
   },
   {
     "name": "--token-color-icon-action",
@@ -360,10 +356,6 @@
     "value": "var(--sbanken-greyscale-500)"
   },
   {
-    "name": "--token-color-icon-destructive",
-    "value": "var(--sbanken-orange-500)"
-  },
-  {
     "name": "--token-color-icon-info",
     "value": "var(--sbanken-green-400)"
   },
@@ -389,7 +381,7 @@
   },
   {
     "name": "--token-color-icon-error",
-    "value": "var(--sbanken-orange-700)"
+    "value": "var(--sbanken-red-600)"
   },
   {
     "name": "--token-color-icon-error-subtle",
@@ -437,7 +429,7 @@
   },
   {
     "name": "--token-color-stroke-action-focus-subtle",
-    "value": "var(--sbanken-blue-100)"
+    "value": "var(--sbanken-greyscale-950)"
   },
   {
     "name": "--token-color-stroke-action-disabled",
@@ -505,7 +497,7 @@
   },
   {
     "name": "--token-color-stroke-error",
-    "value": "var(--sbanken-orange-500)"
+    "value": "var(--sbanken-red-600)"
   },
   {
     "name": "--token-color-stroke-marketing",
@@ -641,11 +633,11 @@
   },
   {
     "name": "--token-color-component-button-background-action-destructive",
-    "value": "var(\n    --sbanken-orange-500\n  )"
+    "value": "var(\n    --sbanken-orange-700\n  )"
   },
   {
     "name": "--token-color-component-button-background-action-destructive-hover",
-    "value": "var(\n    --sbanken-orange-500\n  )"
+    "value": "var(\n    --sbanken-orange-700\n  )"
   },
   {
     "name": "--token-color-component-button-background-action-destructive-hover-subtle",
@@ -653,7 +645,7 @@
   },
   {
     "name": "--token-color-component-button-background-action-destructive-pressed",
-    "value": "var(\n    --sbanken-orange-400\n  )"
+    "value": "var(\n    --sbanken-orange-600\n  )"
   },
   {
     "name": "--token-color-component-button-background-action-destructive-pressed-subtle",
@@ -701,7 +693,7 @@
   },
   {
     "name": "--token-color-component-button-text-neutral-destructive",
-    "value": "var(\n    --sbanken-purple-1000\n  )"
+    "value": "var(\n    --sbanken-greyscale-0\n  )"
   },
   {
     "name": "--token-color-component-button-text-action-destructive",
@@ -737,7 +729,7 @@
   },
   {
     "name": "--token-color-component-button-icon-neutral-destructive",
-    "value": "var(\n    --sbanken-purple-1000\n  )"
+    "value": "var(\n    --sbanken-greyscale-0\n  )"
   },
   {
     "name": "--token-color-component-button-icon-action-destructive",
@@ -778,10 +770,6 @@
   {
     "name": "--token-color-component-tooltip-background-neutral",
     "value": "var(\n    --sbanken-greyscale-100\n  )"
-  },
-  {
-    "name": "--token-color-component-table-background-neutral-alternative",
-    "value": "var(\n    --sbanken-greyscale-800\n  )"
   },
   {
     "name": "--token-color-component-dimmer-background",

@@ -29,7 +29,7 @@
   },
   {
     "name": "--token-color-background-action-focus-subtle",
-    "value": "var(--dnb-blue-100)"
+    "value": "var(--dnb-blue-50)"
   },
   {
     "name": "--token-color-background-action-disabled",
@@ -252,11 +252,11 @@
     "value": "var(--dnb-greyscale-200)"
   },
   {
-    "name": "--token-color-text-destructive",
-    "value": "var(--dnb-orange-600)"
+    "name": "--token-color-text-error",
+    "value": "var(--dnb-red-500)"
   },
   {
-    "name": "--token-color-text-destructive-inverse",
+    "name": "--token-color-text-error-inverse",
     "value": "var(--dnb-red-600)"
   },
   {
@@ -274,10 +274,6 @@
   {
     "name": "--token-color-text-positive-inverse",
     "value": "var(--dnb-green-700)"
-  },
-  {
-    "name": "--token-color-text-error",
-    "value": "var(--dnb-red-600)"
   },
   {
     "name": "--token-color-icon-action",
@@ -360,10 +356,6 @@
     "value": "var(--dnb-greyscale-400)"
   },
   {
-    "name": "--token-color-icon-destructive",
-    "value": "var(--dnb-orange-600)"
-  },
-  {
     "name": "--token-color-icon-info",
     "value": "var(--dnb-coldgreen-300)"
   },
@@ -389,7 +381,7 @@
   },
   {
     "name": "--token-color-icon-error",
-    "value": "var(--dnb-red-600)"
+    "value": "var(--dnb-red-500)"
   },
   {
     "name": "--token-color-icon-error-subtle",
@@ -437,7 +429,7 @@
   },
   {
     "name": "--token-color-stroke-action-focus-subtle",
-    "value": "var(--dnb-blue-100)"
+    "value": "var(--dnb-greyscale-1000)"
   },
   {
     "name": "--token-color-stroke-action-disabled",
@@ -505,7 +497,7 @@
   },
   {
     "name": "--token-color-stroke-error",
-    "value": "var(--dnb-orange-600)"
+    "value": "var(--dnb-red-500)"
   },
   {
     "name": "--token-color-stroke-marketing",
@@ -778,10 +770,6 @@
   {
     "name": "--token-color-component-tooltip-background-neutral",
     "value": "var(\n    --dnb-greyscale-100\n  )"
-  },
-  {
-    "name": "--token-color-component-table-background-neutral-alternative",
-    "value": "var(\n    --dnb-greyscale-800\n  )"
   },
   {
     "name": "--token-color-component-dimmer-background",

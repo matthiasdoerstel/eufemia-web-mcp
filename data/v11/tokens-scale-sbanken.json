@@ -452,8 +452,16 @@
     "value": "#ffdbe9"
   },
   {
+    "name": "--sbanken-red-600",
+    "value": "#ff3c64"
+  },
+  {
     "name": "--sbanken-red-700",
     "value": "#d8134b"
+  },
+  {
+    "name": "--sbanken-red-950",
+    "value": "#3c010b"
   },
   {
     "name": "--sbanken-orange-400",
@@ -462,6 +470,10 @@
   {
     "name": "--sbanken-orange-500",
     "value": "#ff5b44"
+  },
+  {
+    "name": "--sbanken-orange-600",
+    "value": "#ff361b"
   },
   {
     "name": "--sbanken-orange-700",
@@ -506,10 +518,6 @@
   {
     "name": "--sbanken-greyscale-0",
     "value": "#fff"
-  },
-  {
-    "name": "--sbanken-greyscale-25",
-    "value": "#fcfcfd"
   },
   {
     "name": "--sbanken-greyscale-50",
@@ -820,11 +828,11 @@
     "value": "var(--sbanken-greyscale-200)"
   },
   {
-    "name": "--token-color-text-destructive",
+    "name": "--token-color-text-error",
     "value": "var(--sbanken-red-700)"
   },
   {
-    "name": "--token-color-text-destructive-inverse",
+    "name": "--token-color-text-error-inverse",
     "value": "var(--sbanken-orange-500)"
   },
   {
@@ -842,10 +850,6 @@
   {
     "name": "--token-color-text-positive-inverse",
     "value": "var(--sbanken-green-600)"
-  },
-  {
-    "name": "--token-color-text-error",
-    "value": "var(--sbanken-red-700)"
   },
   {
     "name": "--token-color-icon-action",
@@ -928,10 +932,6 @@
     "value": "var(--sbanken-greyscale-600)"
   },
   {
-    "name": "--token-color-icon-destructive",
-    "value": "var(--sbanken-red-700)"
-  },
-  {
     "name": "--token-color-icon-info",
     "value": "var(--sbanken-green-600)"
   },
@@ -1005,7 +1005,7 @@
   },
   {
     "name": "--token-color-stroke-action-focus-subtle",
-    "value": "var(--sbanken-blue-100)"
+    "value": "var(--sbanken-greyscale-0)"
   },
   {
     "name": "--token-color-stroke-action-disabled",
@@ -1346,10 +1346,6 @@
   {
     "name": "--token-color-component-tooltip-background-neutral",
     "value": "var(\n    --sbanken-greyscale-800\n  )"
-  },
-  {
-    "name": "--token-color-component-table-background-neutral-alternative",
-    "value": "var(\n    --sbanken-greyscale-25\n  )"
   },
   {
     "name": "--token-color-component-dimmer-background",

@@ -29,7 +29,7 @@
   },
   {
     "name": "--token-color-background-action-focus-subtle",
-    "value": "var(--carnegie-blue-100)"
+    "value": "var(--carnegie-blue-50)"
   },
   {
     "name": "--token-color-background-action-disabled",
@@ -252,12 +252,12 @@
     "value": "var(--carnegie-greyscale-200)"
   },
   {
-    "name": "--token-color-text-destructive",
+    "name": "--token-color-text-error",
     "value": "var(--carnegie-red-600)"
   },
   {
-    "name": "--token-color-text-destructive-inverse",
-    "value": "var(--carnegie-orange-600)"
+    "name": "--token-color-text-error-inverse",
+    "value": "var(--carnegie-red-500)"
   },
   {
     "name": "--token-color-text-warning",
@@ -274,10 +274,6 @@
   {
     "name": "--token-color-text-positive-inverse",
     "value": "var(--carnegie-green-600)"
-  },
-  {
-    "name": "--token-color-text-error",
-    "value": "var(--carnegie-red-600)"
   },
   {
     "name": "--token-color-icon-action",
@@ -360,10 +356,6 @@
     "value": "var(--carnegie-greyscale-500)"
   },
   {
-    "name": "--token-color-icon-destructive",
-    "value": "var(--carnegie-red-600)"
-  },
-  {
     "name": "--token-color-icon-info",
     "value": "var(--carnegie-coldgreen-600)"
   },
@@ -437,7 +429,7 @@
   },
   {
     "name": "--token-color-stroke-action-focus-subtle",
-    "value": "var(--carnegie-blue-100)"
+    "value": "var(--carnegie-greyscale-0)"
   },
   {
     "name": "--token-color-stroke-action-disabled",
@@ -778,10 +770,6 @@
   {
     "name": "--token-color-component-tooltip-background-neutral",
     "value": "var(\n    --carnegie-greyscale-800\n  )"
-  },
-  {
-    "name": "--token-color-component-table-background-neutral-alternative",
-    "value": "var(\n    --carnegie-greyscale-25\n  )"
   },
   {
     "name": "--token-color-component-dimmer-background",
