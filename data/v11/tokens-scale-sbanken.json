@@ -328,14 +328,6 @@
     "value": "72em"
   },
   {
-    "name": "--sb-layout-x-large",
-    "value": "80em"
-  },
-  {
-    "name": "--sb-layout-xx-large",
-    "value": "90em"
-  },
-  {
     "name": "--sb-shadow-small",
     "value": "0 2px 4px rgba(38 35 66 / 12%)"
   },
@@ -1458,10 +1450,6 @@
   {
     "name": "--dd-max-width",
     "value": "40ch"
-  },
-  {
-    "name": "--typography-h-default-font-weight",
-    "value": "var(--font-weight-medium)"
   },
   {
     "name": "--typography-h-xx-large-font-size",

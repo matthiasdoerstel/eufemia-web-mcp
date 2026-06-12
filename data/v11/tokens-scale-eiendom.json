@@ -185,7 +185,7 @@
   },
   {
     "name": "--dnb-red-500",
-    "value": "#ed4c4c"
+    "value": "#ff4646"
   },
   {
     "name": "--dnb-red-600",
@@ -1118,10 +1118,6 @@
   {
     "name": "--dd-max-width",
     "value": "40ch"
-  },
-  {
-    "name": "--typography-h-default-font-weight",
-    "value": "var(--font-weight-medium)"
   },
   {
     "name": "--typography-h-xx-large-font-size",

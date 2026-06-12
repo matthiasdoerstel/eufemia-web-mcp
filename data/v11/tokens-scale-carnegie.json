@@ -1112,10 +1112,6 @@
     "value": "40ch"
   },
   {
-    "name": "--typography-h-default-font-weight",
-    "value": "var(--font-weight-medium)"
-  },
-  {
     "name": "--typography-h-xx-large-font-size",
     "value": "var(--font-size-xx-large)"
   },

@@ -4,6 +4,10 @@
     "hasMedium": true
   },
   {
+    "name": "accessibility",
+    "hasMedium": true
+  },
+  {
     "name": "account",
     "hasMedium": true
   },
@@ -33,6 +37,10 @@
   },
   {
     "name": "add_circled",
+    "hasMedium": true
+  },
+  {
+    "name": "ai",
     "hasMedium": true
   },
   {
@@ -253,6 +261,10 @@
   },
   {
     "name": "chip",
+    "hasMedium": true
+  },
+  {
+    "name": "clearing_house",
     "hasMedium": true
   },
   {
@@ -512,6 +524,10 @@
     "hasMedium": true
   },
   {
+    "name": "football",
+    "hasMedium": true
+  },
+  {
     "name": "fortune_ball",
     "hasMedium": true
   },
@@ -593,6 +609,10 @@
   },
   {
     "name": "history",
+    "hasMedium": true
+  },
+  {
+    "name": "holiday_home",
     "hasMedium": true
   },
   {
@@ -760,6 +780,14 @@
     "hasMedium": true
   },
   {
+    "name": "moneybag_in_hand",
+    "hasMedium": true
+  },
+  {
+    "name": "moon",
+    "hasMedium": true
+  },
+  {
     "name": "more",
     "hasMedium": true
   },
@@ -805,6 +833,10 @@
   },
   {
     "name": "paragraph",
+    "hasMedium": true
+  },
+  {
+    "name": "passkey",
     "hasMedium": true
   },
   {
@@ -857,6 +889,10 @@
   },
   {
     "name": "play",
+    "hasMedium": true
+  },
+  {
+    "name": "plot",
     "hasMedium": true
   },
   {
@@ -1016,6 +1052,10 @@
     "hasMedium": true
   },
   {
+    "name": "stop_square",
+    "hasMedium": true
+  },
+  {
     "name": "stopwatch",
     "hasMedium": true
   },
@@ -1025,6 +1065,10 @@
   },
   {
     "name": "subtract_circled",
+    "hasMedium": true
+  },
+  {
+    "name": "sun",
     "hasMedium": true
   },
   {

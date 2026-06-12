@@ -385,7 +385,7 @@
   },
   {
     "name": "--token-color-icon-error-subtle",
-    "value": "var(--sbanken-orange-950)"
+    "value": "var(--sbanken-red-950)"
   },
   {
     "name": "--token-color-icon-marketing",
@@ -613,7 +613,7 @@
   },
   {
     "name": "--token-color-decorative-third-bold-static",
-    "value": "var(--sbanken-green-700)"
+    "value": "var(--sbanken-green-300)"
   },
   {
     "name": "--token-color-decorative-third-intense",
