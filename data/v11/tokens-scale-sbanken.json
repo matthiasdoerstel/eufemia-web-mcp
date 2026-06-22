@@ -1672,32 +1672,12 @@
     "value": "var(--font-weight-regular)"
   },
   {
-    "name": "--typography-h-large-small-font-size",
-    "value": "var(--sb-font-size-medium--plus)"
-  },
-  {
     "name": "--typography-h-large-weight",
     "value": "var(--font-weight-regular)"
   },
   {
-    "name": "--typography-lead-small-font-size",
-    "value": "var(--font-size-basis)"
-  },
-  {
-    "name": "--typography-lead-small-line-height",
-    "value": "var(--line-height-basis)"
-  },
-  {
     "name": "--typography-lead-weight",
     "value": "var(--font-weight-regular)"
-  },
-  {
-    "name": "--typography-h-medium-font-size",
-    "value": "var(--sb-font-size-medium--plus)"
-  },
-  {
-    "name": "--typography-h-medium-small-font-size",
-    "value": "var(--font-size-medium)"
   },
   {
     "name": "--typography-h-medium-weight",
@@ -1729,7 +1709,7 @@
   },
   {
     "name": "--typography-h-x-large-small-font-size",
-    "value": "var(\n      --sb-font-size-medium--plus\n    )"
+    "value": "var(--font-size-medium)"
   },
   {
     "name": "--typography-h-x-large-small-line-height",
@@ -1737,7 +1717,7 @@
   },
   {
     "name": "--typography-h-large-font-size",
-    "value": "var(--sb-font-size-medium--plus)"
+    "value": "var(--font-size-medium)"
   },
   {
     "name": "--typography-h-large-line-height",
@@ -1745,19 +1725,19 @@
   },
   {
     "name": "--typography-h-large-small-font-size",
-    "value": "var(--font-size-medium)"
+    "value": "var(--font-size-basis)"
   },
   {
     "name": "--typography-h-large-small-line-height",
-    "value": "var(--line-height-lead)"
+    "value": "var(--line-height-basis)"
   },
   {
     "name": "--typography-h-medium-font-size",
-    "value": "var(--font-size-medium)"
+    "value": "var(--font-size-basis)"
   },
   {
     "name": "--typography-h-medium-line-height",
-    "value": "var(--line-height-lead)"
+    "value": "var(--line-height-basis)"
   },
   {
     "name": "--typography-h-medium-small-font-size",
@@ -1841,7 +1821,7 @@
   },
   {
     "name": "--line-height-x-small",
-    "value": "1.125rem"
+    "value": "1.25rem"
   },
   {
     "name": "--line-height-small",
@@ -1857,23 +1837,23 @@
   },
   {
     "name": "--line-height-lead",
-    "value": "1.5rem"
+    "value": "var(--line-height-medium)"
   },
   {
     "name": "--line-height-medium",
-    "value": "2rem"
+    "value": "1.5rem"
   },
   {
     "name": "--line-height-large",
-    "value": "2.5rem"
+    "value": "2rem"
   },
   {
     "name": "--line-height-x-large",
-    "value": "3.5rem"
+    "value": "2.5rem"
   },
   {
     "name": "--line-height-xx-large",
-    "value": "var(--line-height-x-large)"
+    "value": "3.5rem"
   },
   {
     "name": "--color-mint-green-50",
@@ -2102,78 +2082,6 @@
   {
     "name": "--font-weight-bold",
     "value": "var(--sb-font-weight-bold)"
-  },
-  {
-    "name": "--font-size-x-small",
-    "value": "var(--sb-font-size-x-small)"
-  },
-  {
-    "name": "--font-size-small",
-    "value": "var(--sb-font-size-small)"
-  },
-  {
-    "name": "--font-size-basis",
-    "value": "var(--sb-font-size-basis)"
-  },
-  {
-    "name": "--font-size-basis--em",
-    "value": "var(--sb-font-size-basis--em)"
-  },
-  {
-    "name": "--font-size-lead",
-    "value": "var(--sb-font-size-lead)"
-  },
-  {
-    "name": "--font-size-medium",
-    "value": "var(--sb-font-size-medium)"
-  },
-  {
-    "name": "--font-size-large",
-    "value": "var(--sb-font-size-large)"
-  },
-  {
-    "name": "--font-size-x-large",
-    "value": "var(--sb-font-size-x-large)"
-  },
-  {
-    "name": "--font-size-xx-large",
-    "value": "var(--sb-font-size-xx-large)"
-  },
-  {
-    "name": "--line-height-x-small",
-    "value": "var(--sb-line-height-x-small)"
-  },
-  {
-    "name": "--line-height-small",
-    "value": "var(--sb-line-height-small)"
-  },
-  {
-    "name": "--line-height-basis",
-    "value": "var(--sb-line-height-basis)"
-  },
-  {
-    "name": "--line-height-basis--em",
-    "value": "var(--sb-line-height-basis--em)"
-  },
-  {
-    "name": "--line-height-lead",
-    "value": "var(--sb-line-height-lead)"
-  },
-  {
-    "name": "--line-height-medium",
-    "value": "var(--sb-line-height-medium)"
-  },
-  {
-    "name": "--line-height-large",
-    "value": "var(--sb-line-height-large)"
-  },
-  {
-    "name": "--line-height-x-large",
-    "value": "var(--sb-line-height-x-large)"
-  },
-  {
-    "name": "--line-height-xx-large",
-    "value": "var(--sb-line-height-xx-large)"
   },
   {
     "name": "--scrollbar-track-width",

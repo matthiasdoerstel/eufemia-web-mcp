@@ -1324,24 +1324,16 @@
     "value": "not([class*=space__bottom]),\n.dnb-spacing .dnb-h--basis:not([class*=space__bottom]),\n.dnb-spacing .dnb-h--small:not([class*=space__bottom]),\n.dnb-spacing .dnb-h--x-small:not([class*=space__bottom]), .dnb-core-style .dnb-spacing .dnb-lead:not([class*=space__bottom]), .dnb-core-style .dnb-spacing .dnb-h--medium:not([class*=space__bottom]), .dnb-core-style .dnb-spacing .dnb-h--basis:not([class*=space__bottom]), .dnb-core-style .dnb-spacing .dnb-h--small:not([class*=space__bottom]), .dnb-core-style .dnb-spacing .dnb-h--x-small:not([class*=space__bottom]) {\n  margin-bottom: 1rem"
   },
   {
-    "name": "--typography-h-xx-large-small-line-height",
-    "value": "var(--line-height-large)"
-  },
-  {
-    "name": "--typography-h-x-large-line-height",
-    "value": "var(--line-height-large)"
-  },
-  {
     "name": "--typography-h-x-large-small-font-size",
     "value": "var(--font-size-x-large)"
   },
   {
-    "name": "--typography-h-large-line-height",
-    "value": "var(--line-height-medium)"
+    "name": "--typography-h-x-large-small-line-height",
+    "value": "var(--line-height-x-large)"
   },
   {
     "name": "--typography-h-large-small-line-height",
-    "value": "calc(\n    var(--line-height-medium) - 0.125rem\n  )"
+    "value": "calc(\n    var(--line-height-large) - 0.125rem\n  )"
   },
   {
     "name": "--typography-lead-small-font-size",
@@ -1350,10 +1342,6 @@
   {
     "name": "--typography-lead-small-line-height",
     "value": "var(--line-height-basis)"
-  },
-  {
-    "name": "--typography-h-medium-line-height",
-    "value": "var(--line-height-lead)"
   },
   {
     "name": "--typography-h-small-small-line-height",
@@ -1433,7 +1421,7 @@
   },
   {
     "name": "--line-height-x-small",
-    "value": "1.125rem"
+    "value": "1.25rem"
   },
   {
     "name": "--line-height-small",
@@ -1449,23 +1437,23 @@
   },
   {
     "name": "--line-height-lead",
-    "value": "1.5rem"
+    "value": "var(--line-height-medium)"
   },
   {
     "name": "--line-height-medium",
-    "value": "2rem"
+    "value": "1.5rem"
   },
   {
     "name": "--line-height-large",
-    "value": "2.5rem"
+    "value": "2rem"
   },
   {
     "name": "--line-height-x-large",
-    "value": "3.5rem"
+    "value": "2.5rem"
   },
   {
     "name": "--line-height-xx-large",
-    "value": "var(--line-height-x-large)"
+    "value": "3.5rem"
   },
   {
     "name": "--color-mint-green-50",
