@@ -32,6 +32,10 @@
     "value": "600"
   },
   {
+    "name": "--font-size-xx-small",
+    "value": "0.8125rem"
+  },
+  {
     "name": "--font-size-x-small",
     "value": "0.875rem"
   },
@@ -1401,7 +1405,7 @@
   },
   {
     "name": "--thickness",
-    "value": "calc(var(--hr-thickness, 0.0625rem) + var(--modifier, 0px))"
+    "value": "calc(\n    var(--hr-thickness, 0.0625rem) + var(--hr-thickness-modifier, 0px)\n  )"
   },
   {
     "name": "--column-gap",
@@ -1428,20 +1432,76 @@
     "value": "40ch"
   },
   {
-    "name": "--typography-h-xx-large-font-size",
-    "value": "var(--font-size-xx-large)"
+    "name": "--typography-font-size-x-small",
+    "value": "var(--font-size-x-small)"
   },
   {
-    "name": "--typography-h-xx-large-line-height",
-    "value": "var(--line-height-xx-large)"
+    "name": "--typography-font-size-small",
+    "value": "var(--font-size-small)"
   },
   {
-    "name": "--typography-h-xx-large-small-font-size",
+    "name": "--typography-font-size-basis",
+    "value": "var(--font-size-basis)"
+  },
+  {
+    "name": "--typography-font-size-medium",
+    "value": "var(--font-size-medium)"
+  },
+  {
+    "name": "--typography-font-size-large",
+    "value": "var(--font-size-large)"
+  },
+  {
+    "name": "--typography-font-size-x-large",
     "value": "var(--font-size-x-large)"
   },
   {
-    "name": "--typography-h-xx-large-small-line-height",
+    "name": "--typography-font-size-xx-large",
+    "value": "var(--font-size-xx-large)"
+  },
+  {
+    "name": "--typography-line-height-x-small",
+    "value": "var(--line-height-x-small)"
+  },
+  {
+    "name": "--typography-line-height-small",
+    "value": "var(--line-height-small)"
+  },
+  {
+    "name": "--typography-line-height-basis",
+    "value": "var(--line-height-basis)"
+  },
+  {
+    "name": "--typography-line-height-medium",
+    "value": "var(--line-height-medium)"
+  },
+  {
+    "name": "--typography-line-height-large",
+    "value": "var(--line-height-large)"
+  },
+  {
+    "name": "--typography-line-height-x-large",
     "value": "var(--line-height-x-large)"
+  },
+  {
+    "name": "--typography-line-height-xx-large",
+    "value": "var(--line-height-xx-large)"
+  },
+  {
+    "name": "--typography-h-xx-large-font-size",
+    "value": "var(--typography-font-size-xx-large)"
+  },
+  {
+    "name": "--typography-h-xx-large-line-height",
+    "value": "var(\n    --typography-line-height-xx-large\n  )"
+  },
+  {
+    "name": "--typography-h-xx-large-small-font-size",
+    "value": "var(\n    --typography-font-size-x-large\n  )"
+  },
+  {
+    "name": "--typography-h-xx-large-small-line-height",
+    "value": "var(\n    --typography-line-height-x-large\n  )"
   },
   {
     "name": "--typography-h-xx-large-weight",
@@ -1449,19 +1509,19 @@
   },
   {
     "name": "--typography-h-x-large-font-size",
-    "value": "var(--font-size-x-large)"
+    "value": "var(--typography-font-size-x-large)"
   },
   {
     "name": "--typography-h-x-large-line-height",
-    "value": "var(--line-height-x-large)"
+    "value": "var(\n    --typography-line-height-x-large\n  )"
   },
   {
     "name": "--typography-h-x-large-small-font-size",
-    "value": "var(--font-size-large)"
+    "value": "var(\n    --typography-font-size-large\n  )"
   },
   {
     "name": "--typography-h-x-large-small-line-height",
-    "value": "var(--line-height-large)"
+    "value": "var(\n    --typography-line-height-large\n  )"
   },
   {
     "name": "--typography-h-x-large-weight",
@@ -1469,19 +1529,19 @@
   },
   {
     "name": "--typography-h-large-font-size",
-    "value": "var(--font-size-large)"
+    "value": "var(--typography-font-size-large)"
   },
   {
     "name": "--typography-h-large-line-height",
-    "value": "var(--line-height-large)"
+    "value": "var(--typography-line-height-large)"
   },
   {
     "name": "--typography-h-large-small-font-size",
-    "value": "var(--font-size-medium)"
+    "value": "var(--typography-font-size-medium)"
   },
   {
     "name": "--typography-h-large-small-line-height",
-    "value": "var(--line-height-medium)"
+    "value": "var(\n    --typography-line-height-medium\n  )"
   },
   {
     "name": "--typography-h-large-weight",
@@ -1489,19 +1549,19 @@
   },
   {
     "name": "--typography-lead-font-size",
-    "value": "var(--font-size-lead)"
+    "value": "var(--typography-font-size-medium)"
   },
   {
     "name": "--typography-lead-line-height",
-    "value": "var(--line-height-lead)"
+    "value": "var(--typography-line-height-medium)"
   },
   {
     "name": "--typography-lead-small-font-size",
-    "value": "var(--font-size-lead)"
+    "value": "var(--typography-font-size-medium)"
   },
   {
     "name": "--typography-lead-small-line-height",
-    "value": "var(--line-height-lead)"
+    "value": "var(\n    --typography-line-height-medium\n  )"
   },
   {
     "name": "--typography-lead-weight",
@@ -1509,19 +1569,19 @@
   },
   {
     "name": "--typography-h-medium-font-size",
-    "value": "var(--font-size-medium)"
+    "value": "var(--typography-font-size-medium)"
   },
   {
     "name": "--typography-h-medium-line-height",
-    "value": "var(--line-height-medium)"
+    "value": "var(--typography-line-height-medium)"
   },
   {
     "name": "--typography-h-medium-small-font-size",
-    "value": "var(--font-size-basis)"
+    "value": "var(--typography-font-size-basis)"
   },
   {
     "name": "--typography-h-medium-small-line-height",
-    "value": "var(--line-height-basis)"
+    "value": "var(\n    --typography-line-height-basis\n  )"
   },
   {
     "name": "--typography-h-medium-weight",
@@ -1529,19 +1589,19 @@
   },
   {
     "name": "--typography-h-basis-font-size",
-    "value": "var(--font-size-basis)"
+    "value": "var(--typography-font-size-basis)"
   },
   {
     "name": "--typography-h-basis-line-height",
-    "value": "var(--line-height-basis)"
+    "value": "var(--typography-line-height-basis)"
   },
   {
     "name": "--typography-h-basis-small-font-size",
-    "value": "var(--font-size-small)"
+    "value": "var(--typography-font-size-small)"
   },
   {
     "name": "--typography-h-basis-small-line-height",
-    "value": "var(--line-height-small)"
+    "value": "var(\n    --typography-line-height-small\n  )"
   },
   {
     "name": "--typography-h-basis-weight",
@@ -1553,19 +1613,19 @@
   },
   {
     "name": "--typography-h-small-font-size",
-    "value": "var(--font-size-small)"
+    "value": "var(--typography-font-size-small)"
   },
   {
     "name": "--typography-h-small-line-height",
-    "value": "var(--line-height-small)"
+    "value": "var(--typography-line-height-small)"
   },
   {
     "name": "--typography-h-small-small-font-size",
-    "value": "var(--font-size-x-small)"
+    "value": "var(\n    --typography-font-size-x-small\n  )"
   },
   {
     "name": "--typography-h-small-small-line-height",
-    "value": "var(--line-height-x-small)"
+    "value": "var(\n    --typography-line-height-x-small\n  )"
   },
   {
     "name": "--typography-h-small-weight",
@@ -1577,11 +1637,11 @@
   },
   {
     "name": "--typography-h-x-small-font-size",
-    "value": "var(--font-size-x-small)"
+    "value": "var(--typography-font-size-x-small)"
   },
   {
     "name": "--typography-h-x-small-line-height",
-    "value": "var(--line-height-x-small)"
+    "value": "var(\n    --typography-line-height-x-small\n  )"
   },
   {
     "name": "--typography-h-x-small-weight",
@@ -1590,6 +1650,174 @@
   {
     "name": "--typography-h-x-small-font-family",
     "value": "var(--font-family-default)"
+  },
+  {
+    "name": "--responsive-font-size-x-small",
+    "value": "0.8125rem"
+  },
+  {
+    "name": "--responsive-font-size-small",
+    "value": "0.875rem"
+  },
+  {
+    "name": "--responsive-font-size-basis",
+    "value": "1rem"
+  },
+  {
+    "name": "--responsive-font-size-medium",
+    "value": "1.125rem"
+  },
+  {
+    "name": "--responsive-font-size-large",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--responsive-font-size-x-large",
+    "value": "1.625rem"
+  },
+  {
+    "name": "--responsive-font-size-xx-large",
+    "value": "2.125rem"
+  },
+  {
+    "name": "--responsive-line-height-x-small",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--responsive-line-height-small",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--responsive-line-height-basis",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--responsive-line-height-medium",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--responsive-line-height-large",
+    "value": "2rem"
+  },
+  {
+    "name": "--responsive-line-height-x-large",
+    "value": "2rem"
+  },
+  {
+    "name": "--responsive-line-height-xx-large",
+    "value": "2rem"
+  },
+  {
+    "name": "--responsive-font-size-x-small",
+    "value": "0.875rem"
+  },
+  {
+    "name": "--responsive-font-size-small",
+    "value": "1rem"
+  },
+  {
+    "name": "--responsive-font-size-basis",
+    "value": "1.125rem"
+  },
+  {
+    "name": "--responsive-font-size-medium",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--responsive-font-size-large",
+    "value": "1.625rem"
+  },
+  {
+    "name": "--responsive-font-size-x-large",
+    "value": "2.125rem"
+  },
+  {
+    "name": "--responsive-font-size-xx-large",
+    "value": "3rem"
+  },
+  {
+    "name": "--responsive-line-height-x-small",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--responsive-line-height-small",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--responsive-line-height-basis",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--responsive-line-height-medium",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--responsive-line-height-large",
+    "value": "2rem"
+  },
+  {
+    "name": "--responsive-line-height-x-large",
+    "value": "2.5rem"
+  },
+  {
+    "name": "--responsive-line-height-xx-large",
+    "value": "2.5rem"
+  },
+  {
+    "name": "--responsive-font-size-x-small",
+    "value": "0.875rem"
+  },
+  {
+    "name": "--responsive-font-size-small",
+    "value": "1rem"
+  },
+  {
+    "name": "--responsive-font-size-basis",
+    "value": "1.125rem"
+  },
+  {
+    "name": "--responsive-font-size-medium",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--responsive-font-size-large",
+    "value": "1.625rem"
+  },
+  {
+    "name": "--responsive-font-size-x-large",
+    "value": "2.125rem"
+  },
+  {
+    "name": "--responsive-font-size-xx-large",
+    "value": "3rem"
+  },
+  {
+    "name": "--responsive-line-height-x-small",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--responsive-line-height-small",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--responsive-line-height-basis",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--responsive-line-height-medium",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--responsive-line-height-large",
+    "value": "2rem"
+  },
+  {
+    "name": "--responsive-line-height-x-large",
+    "value": "2.5rem"
+  },
+  {
+    "name": "--responsive-line-height-xx-large",
+    "value": "3.5rem"
   },
   {
     "name": "--xx-large",
@@ -1606,6 +1834,118 @@
   {
     "name": "--xx-large",
     "value": "not([class*=space__right]),\n.dnb-h--x-large:not([class*=space__right]),\n.dnb-h--large:not([class*=space__right]),\n.dnb-h--medium:not([class*=space__right]),\n.dnb-h--basis:not([class*=space__right]),\n.dnb-h--small:not([class*=space__right]),\n.dnb-h--x-small:not([class*=space__right]),\n.dnb-core-style .dnb-lead:not([class*=space__right]),\n.dnb-core-style .dnb-h--xx-large:not([class*=space__right]),\n.dnb-core-style .dnb-h--x-large:not([class*=space__right]),\n.dnb-core-style .dnb-h--large:not([class*=space__right]),\n.dnb-core-style .dnb-h--medium:not([class*=space__right]),\n.dnb-core-style .dnb-h--basis:not([class*=space__right]),\n.dnb-core-style .dnb-h--small:not([class*=space__right]),\n.dnb-core-style .dnb-h--x-small:not([class*=space__right]) {\n  margin-right: 0"
+  },
+  {
+    "name": "--typography-font-size-x-small",
+    "value": "var(--font-size-x-small)"
+  },
+  {
+    "name": "--typography-font-size-small",
+    "value": "var(--font-size-small)"
+  },
+  {
+    "name": "--typography-font-size-basis",
+    "value": "var(--font-size-basis)"
+  },
+  {
+    "name": "--typography-font-size-medium",
+    "value": "var(--font-size-medium)"
+  },
+  {
+    "name": "--typography-font-size-large",
+    "value": "var(--font-size-large)"
+  },
+  {
+    "name": "--typography-font-size-x-large",
+    "value": "var(--font-size-x-large)"
+  },
+  {
+    "name": "--typography-font-size-xx-large",
+    "value": "var(--font-size-xx-large)"
+  },
+  {
+    "name": "--typography-line-height-x-small",
+    "value": "var(--line-height-x-small)"
+  },
+  {
+    "name": "--typography-line-height-small",
+    "value": "var(--line-height-small)"
+  },
+  {
+    "name": "--typography-line-height-basis",
+    "value": "var(--line-height-basis)"
+  },
+  {
+    "name": "--typography-line-height-medium",
+    "value": "var(--line-height-medium)"
+  },
+  {
+    "name": "--typography-line-height-large",
+    "value": "var(--line-height-large)"
+  },
+  {
+    "name": "--typography-line-height-x-large",
+    "value": "var(--line-height-x-large)"
+  },
+  {
+    "name": "--typography-line-height-xx-large",
+    "value": "var(--line-height-xx-large)"
+  },
+  {
+    "name": "--typography-font-size-x-small",
+    "value": "var(--responsive-font-size-x-small)"
+  },
+  {
+    "name": "--typography-font-size-small",
+    "value": "var(--responsive-font-size-small)"
+  },
+  {
+    "name": "--typography-font-size-basis",
+    "value": "var(--responsive-font-size-basis)"
+  },
+  {
+    "name": "--typography-font-size-medium",
+    "value": "var(--responsive-font-size-medium)"
+  },
+  {
+    "name": "--typography-font-size-large",
+    "value": "var(--responsive-font-size-large)"
+  },
+  {
+    "name": "--typography-font-size-x-large",
+    "value": "var(--responsive-font-size-x-large)"
+  },
+  {
+    "name": "--typography-font-size-xx-large",
+    "value": "var(--responsive-font-size-xx-large)"
+  },
+  {
+    "name": "--typography-line-height-x-small",
+    "value": "var(--responsive-line-height-x-small)"
+  },
+  {
+    "name": "--typography-line-height-small",
+    "value": "var(--responsive-line-height-small)"
+  },
+  {
+    "name": "--typography-line-height-basis",
+    "value": "var(--responsive-line-height-basis)"
+  },
+  {
+    "name": "--typography-line-height-medium",
+    "value": "var(--responsive-line-height-medium)"
+  },
+  {
+    "name": "--typography-line-height-large",
+    "value": "var(--responsive-line-height-large)"
+  },
+  {
+    "name": "--typography-line-height-x-large",
+    "value": "var(--responsive-line-height-x-large)"
+  },
+  {
+    "name": "--typography-line-height-xx-large",
+    "value": "var(\n    --responsive-line-height-xx-large\n  )"
   },
   {
     "name": "--xx-large",
@@ -1641,27 +1981,27 @@
   },
   {
     "name": "--typography-h-x-large-small-font-size",
-    "value": "var(--font-size-x-large)"
+    "value": "var(\n    --typography-font-size-x-large\n  )"
   },
   {
     "name": "--typography-h-x-large-small-line-height",
-    "value": "var(--line-height-x-large)"
+    "value": "var(\n    --typography-line-height-x-large\n  )"
   },
   {
     "name": "--typography-h-large-small-line-height",
-    "value": "calc(\n    var(--line-height-large) - 0.125rem\n  )"
+    "value": "calc(\n    var(--typography-line-height-large) - 0.125rem\n  )"
   },
   {
     "name": "--typography-lead-small-font-size",
-    "value": "var(--font-size-basis)"
+    "value": "var(--typography-font-size-basis)"
   },
   {
     "name": "--typography-lead-small-line-height",
-    "value": "var(--line-height-basis)"
+    "value": "var(--typography-line-height-basis)"
   },
   {
     "name": "--typography-h-small-small-line-height",
-    "value": "var(--line-height-small)"
+    "value": "var(\n    --typography-line-height-small\n  )"
   },
   {
     "name": "--scrollbar-track-width",

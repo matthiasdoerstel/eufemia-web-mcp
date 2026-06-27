@@ -32,6 +32,10 @@
     "value": "600"
   },
   {
+    "name": "--font-size-xx-small",
+    "value": "0.8125rem"
+  },
+  {
     "name": "--font-size-x-small",
     "value": "0.875rem"
   },
