@@ -568,6 +568,10 @@
     "value": "#000"
   },
   {
+    "name": "--csstools-color-scheme--light",
+    "value": "initial"
+  },
+  {
     "name": "--token-color-background-page-background",
     "value": "var(--sbanken-greyscale-0)"
   },

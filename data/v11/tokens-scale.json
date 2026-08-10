@@ -548,6 +548,10 @@
     "value": "#276ace"
   },
   {
+    "name": "--csstools-color-scheme--light",
+    "value": "initial"
+  },
+  {
     "name": "--token-color-background-page-background",
     "value": "var(--dnb-greyscale-0)"
   },

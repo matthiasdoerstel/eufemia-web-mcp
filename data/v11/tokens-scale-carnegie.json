@@ -228,6 +228,10 @@
     "value": "#805b0e"
   },
   {
+    "name": "--csstools-color-scheme--light",
+    "value": "initial"
+  },
+  {
     "name": "--token-color-background-page-background",
     "value": "var(--carnegie-greyscale-0)"
   },
