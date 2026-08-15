@@ -1,6 +1,6 @@
 {
-  "eufemiaVersion": "11.9.0",
-  "extractedAt": "2026-08-10T09:14:28.881Z",
+  "eufemiaVersion": "11.10.0",
+  "extractedAt": "2026-08-15T08:22:26.708Z",
   "themes": [
     "ui",
     "sbanken",
@@ -10,7 +10,7 @@
   "counts": {
     "primitiveTokens": 81,
     "icons": 297,
-    "components": 150,
+    "components": 151,
     "themes": {
       "ui": {
         "scale": 507,
