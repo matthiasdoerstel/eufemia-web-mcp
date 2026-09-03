@@ -1037,7 +1037,7 @@
   },
   {
     "name": "--token-radius-xl",
-    "value": "1.5rem"
+    "value": "0.5rem"
   },
   {
     "name": "--token-radius-full",
@@ -2002,6 +2002,10 @@
   {
     "name": "--easing-default",
     "value": "cubic-bezier(0.42, 0, 0, 1)"
+  },
+  {
+    "name": "--easing-fast-bounce",
+    "value": "cubic-bezier(0.34, 1.56, 0.64, 1)"
   },
   {
     "name": "--prose-max-width",

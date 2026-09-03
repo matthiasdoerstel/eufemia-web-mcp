@@ -805,7 +805,7 @@
   },
   {
     "name": "--token-radius-xl",
-    "value": "1.5rem"
+    "value": "0.5rem"
   },
   {
     "name": "--token-radius-full",
