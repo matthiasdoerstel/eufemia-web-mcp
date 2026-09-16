@@ -40,6 +40,10 @@
     "hasMedium": true
   },
   {
+    "name": "add_reaction",
+    "hasMedium": true
+  },
+  {
     "name": "ai",
     "hasMedium": true
   },
@@ -1025,6 +1029,10 @@
   },
   {
     "name": "snowmobile",
+    "hasMedium": true
+  },
+  {
+    "name": "solve",
     "hasMedium": true
   },
   {
