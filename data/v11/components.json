@@ -1550,6 +1550,18 @@
         "status": "optional",
         "type": "'({ checked: boolean; event: MouseEvent, preventDefault: () => void }) => void'",
         "description": "Will be called on click."
+      },
+      {
+        "name": "onKeyDown",
+        "status": "optional",
+        "type": "'(event: React.KeyboardEvent<HTMLInputElement>) => void'",
+        "description": "Will be called when a key is pressed while the checkbox has focus. Call "
+      },
+      {
+        "name": "onKeyUp",
+        "status": "optional",
+        "type": "'(event: React.KeyboardEvent<HTMLInputElement>) => void'",
+        "description": "Will be called when a key is released while the checkbox has focus."
       }
     ]
   },
@@ -2048,6 +2060,18 @@
         "status": "optional",
         "type": "'function'",
         "description": "Will be called once the input loses focus."
+      },
+      {
+        "name": "onKeyDown",
+        "status": "optional",
+        "type": "'(event: React.KeyboardEvent<HTMLElement>) => void'",
+        "description": "Will be called when a key is pressed while the date input has focus. Call "
+      },
+      {
+        "name": "onKeyUp",
+        "status": "optional",
+        "type": "'(event: React.KeyboardEvent<HTMLElement>) => void'",
+        "description": "Will be called when a key is released while the date input has focus."
       }
     ]
   },
@@ -6326,6 +6350,18 @@
         "status": "optional",
         "type": "'function'",
         "description": "Will be called once the user stops dragging. Returns `{ event }"
+      },
+      {
+        "name": "onKeyDown",
+        "status": "optional",
+        "type": "'(event: React.KeyboardEvent<HTMLInputElement>) => void'",
+        "description": "Will be called when a key is pressed while a thumb button has focus."
+      },
+      {
+        "name": "onKeyUp",
+        "status": "optional",
+        "type": "'(event: React.KeyboardEvent<HTMLInputElement>) => void'",
+        "description": "Will be called when a key is released while a thumb button has focus."
       }
     ]
   },
@@ -6579,6 +6615,18 @@
         "status": "optional",
         "type": "'({ checked: boolean; event: MouseEvent, preventDefault: () => void }) => void'",
         "description": "Will be called on click."
+      },
+      {
+        "name": "onKeyDown",
+        "status": "optional",
+        "type": "'(event: React.KeyboardEvent<HTMLInputElement>) => void'",
+        "description": "Will be called when a key is pressed while the switch has focus. Call "
+      },
+      {
+        "name": "onKeyUp",
+        "status": "optional",
+        "type": "'(event: React.KeyboardEvent<HTMLInputElement>) => void'",
+        "description": "Will be called when a key is released while the switch has focus."
       }
     ]
   },
@@ -7446,6 +7494,18 @@
         "status": "optional",
         "type": "'function'",
         "description": "Will be called on state changes made by the user. Returns a boolean and string `{ checked, value, event }"
+      },
+      {
+        "name": "onKeyDown",
+        "status": "optional",
+        "type": "'(event: React.KeyboardEvent<HTMLButtonElement>) => void'",
+        "description": "Will be called when a key is pressed while the toggle button has focus. Call "
+      },
+      {
+        "name": "onKeyUp",
+        "status": "optional",
+        "type": "'(event: React.KeyboardEvent<HTMLButtonElement>) => void'",
+        "description": "Will be called when a key is released while the toggle button has focus."
       }
     ]
   },
