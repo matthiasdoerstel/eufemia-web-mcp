@@ -1345,171 +1345,171 @@
   },
   {
     "name": "--responsive-font-size-x-small",
-    "value": "0.8125rem"
+    "value": "var(--font-size-xx-small)"
   },
   {
     "name": "--responsive-font-size-small",
-    "value": "0.875rem"
+    "value": "var(--font-size-x-small)"
   },
   {
     "name": "--responsive-font-size-basis",
-    "value": "1rem"
+    "value": "var(--font-size-small)"
   },
   {
     "name": "--responsive-font-size-medium",
-    "value": "1.125rem"
+    "value": "var(--font-size-basis)"
   },
   {
     "name": "--responsive-font-size-large",
-    "value": "1.25rem"
+    "value": "var(--font-size-medium)"
   },
   {
     "name": "--responsive-font-size-x-large",
-    "value": "1.625rem"
+    "value": "var(--font-size-large)"
   },
   {
     "name": "--responsive-font-size-xx-large",
-    "value": "2.125rem"
+    "value": "var(--font-size-x-large)"
   },
   {
     "name": "--responsive-line-height-x-small",
-    "value": "1.25rem"
+    "value": "var(--line-height-x-small)"
   },
   {
     "name": "--responsive-line-height-small",
-    "value": "1.25rem"
+    "value": "var(--line-height-x-small)"
   },
   {
     "name": "--responsive-line-height-basis",
-    "value": "1.25rem"
+    "value": "var(--line-height-small)"
   },
   {
     "name": "--responsive-line-height-medium",
-    "value": "1.5rem"
+    "value": "var(--line-height-medium)"
   },
   {
     "name": "--responsive-line-height-large",
-    "value": "2rem"
+    "value": "var(--line-height-large)"
   },
   {
     "name": "--responsive-line-height-x-large",
-    "value": "2rem"
+    "value": "var(--line-height-large)"
   },
   {
     "name": "--responsive-line-height-xx-large",
-    "value": "2rem"
+    "value": "var(--line-height-x-large)"
   },
   {
     "name": "--responsive-font-size-x-small",
-    "value": "0.875rem"
+    "value": "var(--font-size-x-small)"
   },
   {
     "name": "--responsive-font-size-small",
-    "value": "1rem"
+    "value": "var(--font-size-small)"
   },
   {
     "name": "--responsive-font-size-basis",
-    "value": "1.125rem"
+    "value": "var(--font-size-basis)"
   },
   {
     "name": "--responsive-font-size-medium",
-    "value": "1.25rem"
+    "value": "var(--font-size-medium)"
   },
   {
     "name": "--responsive-font-size-large",
-    "value": "1.625rem"
+    "value": "var(--font-size-large)"
   },
   {
     "name": "--responsive-font-size-x-large",
-    "value": "2.125rem"
+    "value": "var(--font-size-x-large)"
   },
   {
     "name": "--responsive-font-size-xx-large",
-    "value": "3rem"
+    "value": "var(--font-size-xx-large)"
   },
   {
     "name": "--responsive-line-height-x-small",
-    "value": "1.25rem"
+    "value": "var(--line-height-x-small)"
   },
   {
     "name": "--responsive-line-height-small",
-    "value": "1.25rem"
+    "value": "var(--line-height-small)"
   },
   {
     "name": "--responsive-line-height-basis",
-    "value": "1.5rem"
+    "value": "var(--line-height-basis)"
   },
   {
     "name": "--responsive-line-height-medium",
-    "value": "1.5rem"
+    "value": "var(--line-height-medium)"
   },
   {
     "name": "--responsive-line-height-large",
-    "value": "2rem"
+    "value": "var(--line-height-large)"
   },
   {
     "name": "--responsive-line-height-x-large",
-    "value": "2.5rem"
+    "value": "var(--line-height-x-large)"
   },
   {
     "name": "--responsive-line-height-xx-large",
-    "value": "2.5rem"
+    "value": "var(--line-height-xx-large)"
   },
   {
     "name": "--responsive-font-size-x-small",
-    "value": "0.875rem"
+    "value": "var(--font-size-x-small)"
   },
   {
     "name": "--responsive-font-size-small",
-    "value": "1rem"
+    "value": "var(--font-size-small)"
   },
   {
     "name": "--responsive-font-size-basis",
-    "value": "1.125rem"
+    "value": "var(--font-size-basis)"
   },
   {
     "name": "--responsive-font-size-medium",
-    "value": "1.25rem"
+    "value": "var(--font-size-medium)"
   },
   {
     "name": "--responsive-font-size-large",
-    "value": "1.625rem"
+    "value": "var(--font-size-large)"
   },
   {
     "name": "--responsive-font-size-x-large",
-    "value": "2.125rem"
+    "value": "var(--font-size-x-large)"
   },
   {
     "name": "--responsive-font-size-xx-large",
-    "value": "3rem"
+    "value": "var(--font-size-xx-large)"
   },
   {
     "name": "--responsive-line-height-x-small",
-    "value": "1.25rem"
+    "value": "var(--line-height-x-small)"
   },
   {
     "name": "--responsive-line-height-small",
-    "value": "1.25rem"
+    "value": "var(--line-height-small)"
   },
   {
     "name": "--responsive-line-height-basis",
-    "value": "1.5rem"
+    "value": "var(--line-height-basis)"
   },
   {
     "name": "--responsive-line-height-medium",
-    "value": "1.5rem"
+    "value": "var(--line-height-medium)"
   },
   {
     "name": "--responsive-line-height-large",
-    "value": "2rem"
+    "value": "var(--line-height-large)"
   },
   {
     "name": "--responsive-line-height-x-large",
-    "value": "2.5rem"
+    "value": "var(--line-height-x-large)"
   },
   {
     "name": "--responsive-line-height-xx-large",
-    "value": "3.5rem"
+    "value": "var(--line-height-xx-large)"
   },
   {
     "name": "--xx-large",
@@ -1769,6 +1769,10 @@
   },
   {
     "name": "--font-size-basis",
+    "value": "1.125rem"
+  },
+  {
+    "name": "--font-size-basis-web",
     "value": "1.125rem"
   },
   {
@@ -2050,6 +2054,82 @@
   {
     "name": "--focus-ring-width",
     "value": "0.25rem"
+  },
+  {
+    "name": "--font-size-xx-small",
+    "value": "0.8125rem"
+  },
+  {
+    "name": "--font-size-x-small",
+    "value": "0.875rem"
+  },
+  {
+    "name": "--font-size-small",
+    "value": "1rem"
+  },
+  {
+    "name": "--font-size-basis",
+    "value": "1.125rem"
+  },
+  {
+    "name": "--font-size-basis-web",
+    "value": "1.125rem"
+  },
+  {
+    "name": "--font-size-medium",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--font-size-large",
+    "value": "1.625rem"
+  },
+  {
+    "name": "--font-size-x-large",
+    "value": "2.125rem"
+  },
+  {
+    "name": "--font-size-xx-large",
+    "value": "3rem"
+  },
+  {
+    "name": "--line-height-x-small",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--line-height-small",
+    "value": "1.25rem"
+  },
+  {
+    "name": "--line-height-basis",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--line-height-medium",
+    "value": "1.5rem"
+  },
+  {
+    "name": "--line-height-large",
+    "value": "2rem"
+  },
+  {
+    "name": "--line-height-x-large",
+    "value": "2.5rem"
+  },
+  {
+    "name": "--line-height-xx-large",
+    "value": "3.5rem"
+  },
+  {
+    "name": "--font-size-basis-native",
+    "value": "var(--font-size-basis-web)"
+  },
+  {
+    "name": "--font-size-basis",
+    "value": "var(\n    --font-size-basis-native,\n    var(--font-size-basis-web)\n  )"
+  },
+  {
+    "name": "--font-size-basis",
+    "value": "var(--font-size-basis-web)"
   },
   {
     "name": "--scrollbar-track-width",
