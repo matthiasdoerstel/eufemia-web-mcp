@@ -1,7 +1,19 @@
 [
   {
     "name": "--font-family-default",
-    "value": "'DNB', sans-serif"
+    "value": "'DNB', 'Arial', sans-serif"
+  },
+  {
+    "name": "--font-family-display",
+    "value": "'DNB Sans Display', var(--font-family-default)"
+  },
+  {
+    "name": "--font-family-display-skeleton",
+    "value": "'DNBSansDisplaySkeleton'"
+  },
+  {
+    "name": "--font-display-text-rendering",
+    "value": "geometricprecision"
   },
   {
     "name": "--font-family-heading",
@@ -18,6 +30,10 @@
   {
     "name": "--font-weight-basis",
     "value": "normal"
+  },
+  {
+    "name": "--font-weight-light",
+    "value": "300"
   },
   {
     "name": "--font-weight-regular",
@@ -394,6 +410,18 @@
   {
     "name": "--line-height-xx-large",
     "value": "3.5rem"
+  },
+  {
+    "name": "--font-family-display-skeleton",
+    "value": "'DNBSansDisplaySkeleton'"
+  },
+  {
+    "name": "--font-family-display",
+    "value": "'DNB Sans Display', var(--font-family-default)"
+  },
+  {
+    "name": "--button-text-translate-y",
+    "value": "0"
   },
   {
     "name": "--font-size-basis-native",

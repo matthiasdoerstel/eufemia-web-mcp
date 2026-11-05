@@ -125,11 +125,11 @@
   },
   {
     "name": "--token-color-background-info",
-    "value": "var(--sbanken-green-600)"
+    "value": "var(--sbanken-blue-700)"
   },
   {
     "name": "--token-color-background-info-subtle",
-    "value": "var(--sbanken-green-50)"
+    "value": "var(--sbanken-blue-100)"
   },
   {
     "name": "--token-color-background-positive",
@@ -357,11 +357,11 @@
   },
   {
     "name": "--token-color-icon-info",
-    "value": "var(--sbanken-green-600)"
+    "value": "var(--sbanken-blue-700)"
   },
   {
     "name": "--token-color-icon-info-subtle",
-    "value": "var(--sbanken-green-50)"
+    "value": "var(--sbanken-blue-100)"
   },
   {
     "name": "--token-color-icon-positive",
@@ -476,6 +476,10 @@
     "value": "var(--sbanken-greyscale-300)"
   },
   {
+    "name": "--token-color-stroke-neutral-base",
+    "value": "var(--sbanken-greyscale-300)"
+  },
+  {
     "name": "--token-color-stroke-neutral-bold",
     "value": "var(--sbanken-greyscale-300)"
   },
@@ -485,7 +489,7 @@
   },
   {
     "name": "--token-color-stroke-info",
-    "value": "var(--sbanken-green-600)"
+    "value": "var(--sbanken-blue-700)"
   },
   {
     "name": "--token-color-stroke-positive",
@@ -765,7 +769,7 @@
   },
   {
     "name": "--token-color-component-button-stroke-selected",
-    "value": "var(\n    --sbanken-purple-700-40\n  )"
+    "value": "color-mix(\n    in srgb,\n    var(--sbanken-purple-700) 40%,\n    transparent\n  )"
   },
   {
     "name": "--token-color-component-tooltip-background-neutral",
@@ -773,7 +777,7 @@
   },
   {
     "name": "--token-color-component-dimmer-background",
-    "value": "var(\n    --sbanken-greyscale-1000-30\n  )"
+    "value": "color-mix(\n    in srgb,\n    var(--sbanken-greyscale-1000) 30%,\n    transparent\n  )"
   },
   {
     "name": "--token-color-component-switch-action-disabled-ondark",
@@ -810,5 +814,13 @@
   {
     "name": "--token-radius-full",
     "value": "9999px"
+  },
+  {
+    "name": "--token-color-component-button-stroke-selected",
+    "value": "rgba(78 8 188 / 40%)"
+  },
+  {
+    "name": "--token-color-component-dimmer-background",
+    "value": "rgba(0 0 0 / 30%)"
   }
 ]

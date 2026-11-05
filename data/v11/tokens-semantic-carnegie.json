@@ -13,7 +13,7 @@
   },
   {
     "name": "--token-color-background-action-hover-subtle",
-    "value": "var(\n    --carnegie-greyscale-1000-5\n  )"
+    "value": "color-mix(\n    in srgb,\n    var(--carnegie-greyscale-1000) 5%,\n    transparent\n  )"
   },
   {
     "name": "--token-color-background-action-pressed",
@@ -21,7 +21,7 @@
   },
   {
     "name": "--token-color-background-action-pressed-subtle",
-    "value": "var(\n    --carnegie-greyscale-1000-10\n  )"
+    "value": "color-mix(\n    in srgb,\n    var(--carnegie-greyscale-1000) 10%,\n    transparent\n  )"
   },
   {
     "name": "--token-color-background-action-focus",
@@ -61,7 +61,7 @@
   },
   {
     "name": "--token-color-background-action-hover-subtle-ondark",
-    "value": "var(\n    --carnegie-greyscale-1000-30\n  )"
+    "value": "color-mix(\n    in srgb,\n    var(--carnegie-greyscale-1000) 30%,\n    transparent\n  )"
   },
   {
     "name": "--token-color-background-action-pressed-ondark",
@@ -69,7 +69,7 @@
   },
   {
     "name": "--token-color-background-action-pressed-subtle-ondark",
-    "value": "var(\n    --carnegie-greyscale-1000-50\n  )"
+    "value": "color-mix(\n    in srgb,\n    var(--carnegie-greyscale-1000) 50%,\n    transparent\n  )"
   },
   {
     "name": "--token-color-background-action-disabled-ondark",
@@ -125,11 +125,11 @@
   },
   {
     "name": "--token-color-background-info",
-    "value": "var(--carnegie-coldgreen-600)"
+    "value": "var(--carnegie-blue-700)"
   },
   {
     "name": "--token-color-background-info-subtle",
-    "value": "var(--carnegie-green-50)"
+    "value": "var(--carnegie-blue-100)"
   },
   {
     "name": "--token-color-background-positive",
@@ -357,11 +357,11 @@
   },
   {
     "name": "--token-color-icon-info",
-    "value": "var(--carnegie-coldgreen-600)"
+    "value": "var(--carnegie-blue-700)"
   },
   {
     "name": "--token-color-icon-info-subtle",
-    "value": "var(--carnegie-green-50)"
+    "value": "var(--carnegie-blue-100)"
   },
   {
     "name": "--token-color-icon-positive",
@@ -476,6 +476,10 @@
     "value": "var(--carnegie-beige-200)"
   },
   {
+    "name": "--token-color-stroke-neutral-base",
+    "value": "var(--carnegie-beige-300)"
+  },
+  {
     "name": "--token-color-stroke-neutral-bold",
     "value": "var(--carnegie-greyscale-1000)"
   },
@@ -485,7 +489,7 @@
   },
   {
     "name": "--token-color-stroke-info",
-    "value": "var(--carnegie-coldgreen-600)"
+    "value": "var(--carnegie-blue-700)"
   },
   {
     "name": "--token-color-stroke-positive",
@@ -773,7 +777,7 @@
   },
   {
     "name": "--token-color-component-dimmer-background",
-    "value": "var(\n    --carnegie-greyscale-1000-30\n  )"
+    "value": "color-mix(\n    in srgb,\n    var(--carnegie-greyscale-1000) 30%,\n    transparent\n  )"
   },
   {
     "name": "--token-color-component-switch-action-disabled-ondark",
@@ -810,5 +814,25 @@
   {
     "name": "--token-radius-full",
     "value": "9999px"
+  },
+  {
+    "name": "--token-color-background-action-hover-subtle",
+    "value": "rgba(0 0 0 / 5%)"
+  },
+  {
+    "name": "--token-color-background-action-pressed-subtle",
+    "value": "rgba(0 0 0 / 10%)"
+  },
+  {
+    "name": "--token-color-background-action-hover-subtle-ondark",
+    "value": "rgba(0 0 0 / 30%)"
+  },
+  {
+    "name": "--token-color-background-action-pressed-subtle-ondark",
+    "value": "rgba(\n      0 0 0 / 50%\n    )"
+  },
+  {
+    "name": "--token-color-component-dimmer-background",
+    "value": "rgba(0 0 0 / 30%)"
   }
 ]

@@ -125,11 +125,11 @@
   },
   {
     "name": "--token-color-background-info",
-    "value": "var(--sbanken-green-400)"
+    "value": "var(--sbanken-blue-300)"
   },
   {
     "name": "--token-color-background-info-subtle",
-    "value": "var(--sbanken-green-900)"
+    "value": "var(--sbanken-blue-950)"
   },
   {
     "name": "--token-color-background-positive",
@@ -229,7 +229,7 @@
   },
   {
     "name": "--token-color-text-neutral-alternative",
-    "value": "var(--sbanken-greyscale-500)"
+    "value": "var(--sbanken-greyscale-400)"
   },
   {
     "name": "--token-color-text-neutral-alternative-inverse",
@@ -357,11 +357,11 @@
   },
   {
     "name": "--token-color-icon-info",
-    "value": "var(--sbanken-green-400)"
+    "value": "var(--sbanken-blue-300)"
   },
   {
     "name": "--token-color-icon-info-subtle",
-    "value": "var(--sbanken-green-950)"
+    "value": "var(--sbanken-blue-950)"
   },
   {
     "name": "--token-color-icon-positive",
@@ -476,16 +476,20 @@
     "value": "var(--sbanken-greyscale-800)"
   },
   {
-    "name": "--token-color-stroke-neutral-bold",
+    "name": "--token-color-stroke-neutral-base",
     "value": "var(--sbanken-greyscale-800)"
   },
   {
+    "name": "--token-color-stroke-neutral-bold",
+    "value": "var(--sbanken-greyscale-600)"
+  },
+  {
     "name": "--token-color-stroke-neutral-alternative",
-    "value": "var(--sbanken-greyscale-900)"
+    "value": "var(--sbanken-greyscale-700)"
   },
   {
     "name": "--token-color-stroke-info",
-    "value": "var(--sbanken-green-700)"
+    "value": "var(--sbanken-blue-300)"
   },
   {
     "name": "--token-color-stroke-positive",
@@ -765,7 +769,7 @@
   },
   {
     "name": "--token-color-component-button-stroke-selected",
-    "value": "var(\n    --sbanken-green-300-40\n  )"
+    "value": "color-mix(\n    in srgb,\n    var(--sbanken-green-300) 40%,\n    transparent\n  )"
   },
   {
     "name": "--token-color-component-tooltip-background-neutral",
@@ -773,7 +777,7 @@
   },
   {
     "name": "--token-color-component-dimmer-background",
-    "value": "var(\n    --sbanken-greyscale-800-60\n  )"
+    "value": "color-mix(\n    in srgb,\n    var(--sbanken-greyscale-800) 60%,\n    transparent\n  )"
   },
   {
     "name": "--token-color-component-switch-action-disabled-ondark",
@@ -810,5 +814,13 @@
   {
     "name": "--token-radius-full",
     "value": "9999px"
+  },
+  {
+    "name": "--token-color-component-button-stroke-selected",
+    "value": "rgba(\n      146 238 205 / 40%\n    )"
+  },
+  {
+    "name": "--token-color-component-dimmer-background",
+    "value": "rgba(58 58 74 / 60%)"
   }
 ]
