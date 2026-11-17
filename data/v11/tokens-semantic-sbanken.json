@@ -428,6 +428,14 @@
     "value": "var(--sbanken-blue-600)"
   },
   {
+    "name": "--token-color-stroke-action-focus-ondark",
+    "value": "var(--sbanken-blue-100)"
+  },
+  {
+    "name": "--token-color-stroke-action-focus-inverse",
+    "value": "var(--sbanken-blue-100)"
+  },
+  {
     "name": "--token-color-stroke-action-focus-subtle",
     "value": "var(--sbanken-greyscale-0)"
   },
@@ -786,6 +794,10 @@
   {
     "name": "--token-color-component-progressbar-neutral-onsubtle",
     "value": "var(\n    --sbanken-greyscale-300\n  )"
+  },
+  {
+    "name": "--token-color-component-cell-background-striped",
+    "value": "var(\n    --sbanken-greyscale-50\n  )"
   },
   {
     "name": "--token-radius-0",

@@ -672,6 +672,14 @@
     "value": "var(--dnb-blue-600)"
   },
   {
+    "name": "--token-color-stroke-action-focus-ondark",
+    "value": "var(--dnb-blue-100)"
+  },
+  {
+    "name": "--token-color-stroke-action-focus-inverse",
+    "value": "var(--dnb-blue-100)"
+  },
+  {
     "name": "--token-color-stroke-action-focus-subtle",
     "value": "var(--dnb-greyscale-0)"
   },
@@ -1030,6 +1038,10 @@
   {
     "name": "--token-color-component-progressbar-neutral-onsubtle",
     "value": "var(\n    --dnb-greyscale-200\n  )"
+  },
+  {
+    "name": "--token-color-component-cell-background-striped",
+    "value": "var(--dnb-greyscale-50)"
   },
   {
     "name": "--token-radius-0",
@@ -2090,6 +2102,14 @@
   {
     "name": "--prose-max-width",
     "value": "60ch"
+  },
+  {
+    "name": "--focus-outline-width",
+    "value": "0.1875rem"
+  },
+  {
+    "name": "--focus-outline-offset",
+    "value": "0.125rem"
   },
   {
     "name": "--focus-ring-width",

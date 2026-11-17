@@ -428,6 +428,14 @@
     "value": "var(--dnb-blue-600)"
   },
   {
+    "name": "--token-color-stroke-action-focus-ondark",
+    "value": "var(--dnb-blue-100)"
+  },
+  {
+    "name": "--token-color-stroke-action-focus-inverse",
+    "value": "var(--dnb-blue-600)"
+  },
+  {
     "name": "--token-color-stroke-action-focus-subtle",
     "value": "var(--dnb-greyscale-1000)"
   },
@@ -786,6 +794,10 @@
   {
     "name": "--token-color-component-progressbar-neutral-onsubtle",
     "value": "var(\n    --dnb-greyscale-700\n  )"
+  },
+  {
+    "name": "--token-color-component-cell-background-striped",
+    "value": "var(\n    --dnb-greyscale-900\n  )"
   },
   {
     "name": "--token-radius-0",

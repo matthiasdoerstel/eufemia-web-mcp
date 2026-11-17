@@ -253,7 +253,7 @@
   },
   {
     "name": "--token-color-text-error",
-    "value": "var(--sbanken-red-600)"
+    "value": "var(--sbanken-red-400)"
   },
   {
     "name": "--token-color-text-error-inverse",
@@ -381,7 +381,7 @@
   },
   {
     "name": "--token-color-icon-error",
-    "value": "var(--sbanken-red-600)"
+    "value": "var(--sbanken-red-400)"
   },
   {
     "name": "--token-color-icon-error-subtle",
@@ -425,6 +425,14 @@
   },
   {
     "name": "--token-color-stroke-action-focus",
+    "value": "var(--sbanken-blue-600)"
+  },
+  {
+    "name": "--token-color-stroke-action-focus-ondark",
+    "value": "var(--sbanken-blue-100)"
+  },
+  {
+    "name": "--token-color-stroke-action-focus-inverse",
     "value": "var(--sbanken-blue-600)"
   },
   {
@@ -785,6 +793,10 @@
   },
   {
     "name": "--token-color-component-progressbar-neutral-onsubtle",
+    "value": "var(\n    --sbanken-greyscale-800\n  )"
+  },
+  {
+    "name": "--token-color-component-cell-background-striped",
     "value": "var(\n    --sbanken-greyscale-800\n  )"
   },
   {

@@ -344,6 +344,14 @@
     "value": "60ch"
   },
   {
+    "name": "--focus-outline-width",
+    "value": "0.1875rem"
+  },
+  {
+    "name": "--focus-outline-offset",
+    "value": "0.125rem"
+  },
+  {
     "name": "--focus-ring-width",
     "value": "0.25rem"
   },
