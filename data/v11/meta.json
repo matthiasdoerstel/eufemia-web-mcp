@@ -1,6 +1,6 @@
 {
-  "eufemiaVersion": "11.18.1",
-  "extractedAt": "2026-11-20T16:38:14.159Z",
+  "eufemiaVersion": "11.19.0",
+  "extractedAt": "2026-11-27T17:47:47.972Z",
   "themes": [
     "ui",
     "sbanken",
@@ -8,27 +8,27 @@
     "carnegie"
   ],
   "counts": {
-    "primitiveTokens": 109,
+    "primitiveTokens": 110,
     "icons": 300,
     "components": 0,
     "themes": {
       "ui": {
-        "scale": 546,
+        "scale": 547,
         "semantic": 209,
         "semanticDark": 209
       },
       "sbanken": {
-        "scale": 635,
+        "scale": 636,
         "semantic": 209,
         "semanticDark": 209
       },
       "eiendom": {
-        "scale": 556,
+        "scale": 557,
         "semantic": 0,
         "semanticDark": 0
       },
       "carnegie": {
-        "scale": 549,
+        "scale": 550,
         "semantic": 212,
         "semanticDark": 0
       }

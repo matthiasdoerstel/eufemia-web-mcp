@@ -1788,6 +1788,10 @@
     "value": "normal"
   },
   {
+    "name": "--font-weight-display",
+    "value": "normal"
+  },
+  {
     "name": "--font-weight-basis",
     "value": "normal"
   },
